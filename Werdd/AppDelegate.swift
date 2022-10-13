@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Werdd
 //
-//  Created by Adriana Belinski on 10/7/22.
+//  Created by Adriana Belinski on 10/9/22.
 //
 
 import UIKit

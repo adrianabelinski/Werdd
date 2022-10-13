@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C649285328F0DB8900E543B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C649285228F0DB8900E543B0 /* AppDelegate.swift */; };
-		C649285528F0DB8900E543B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C649285428F0DB8900E543B0 /* SceneDelegate.swift */; };
-		C649285728F0DB8900E543B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C649285628F0DB8900E543B0 /* ViewController.swift */; };
-		C649285C28F0DB8F00E543B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C649285B28F0DB8F00E543B0 /* Assets.xcassets */; };
-		C649285F28F0DB8F00E543B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C649285D28F0DB8F00E543B0 /* LaunchScreen.storyboard */; };
+		C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072228F3BA89003CDE14 /* AppDelegate.swift */; };
+		C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */; };
+		C6D4072728F3BA89003CDE14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072628F3BA89003CDE14 /* ViewController.swift */; };
+		C6D4072C28F3BA8B003CDE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */; };
+		C6D4072F28F3BA8B003CDE14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */; };
+		C6D4073E28F46944003CDE14 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D4073D28F46941003CDE14 /* Rubik-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C649284F28F0DB8900E543B0 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C649285228F0DB8900E543B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C649285428F0DB8900E543B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C649285628F0DB8900E543B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C649285B28F0DB8F00E543B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C649285E28F0DB8F00E543B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C649286028F0DB8F00E543B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6D4071F28F3BA89003CDE14 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D4072228F3BA89003CDE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C6D4072628F3BA89003CDE14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6D4072E28F3BA8B003CDE14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C6D4073028F3BA8B003CDE14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6D4073D28F46941003CDE14 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Bold.ttf"; path = "../../../Rubik(2)/static/Rubik-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C649284C28F0DB8900E543B0 /* Frameworks */ = {
+		C6D4071C28F3BA89003CDE14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,45 +37,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C649284628F0DB8900E543B0 = {
+		C6D4071628F3BA89003CDE14 = {
 			isa = PBXGroup;
 			children = (
-				C649285128F0DB8900E543B0 /* Werdd */,
-				C649285028F0DB8900E543B0 /* Products */,
+				C6D4072128F3BA89003CDE14 /* Werdd */,
+				C6D4072028F3BA89003CDE14 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C649285028F0DB8900E543B0 /* Products */ = {
+		C6D4072028F3BA89003CDE14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C649284F28F0DB8900E543B0 /* Werdd.app */,
+				C6D4071F28F3BA89003CDE14 /* Werdd.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C649285128F0DB8900E543B0 /* Werdd */ = {
+		C6D4072128F3BA89003CDE14 /* Werdd */ = {
 			isa = PBXGroup;
 			children = (
-				C649285228F0DB8900E543B0 /* AppDelegate.swift */,
-				C649285428F0DB8900E543B0 /* SceneDelegate.swift */,
-				C649285628F0DB8900E543B0 /* ViewController.swift */,
-				C649285B28F0DB8F00E543B0 /* Assets.xcassets */,
-				C649285D28F0DB8F00E543B0 /* LaunchScreen.storyboard */,
-				C649286028F0DB8F00E543B0 /* Info.plist */,
+				C6D4073828F46474003CDE14 /* Rubik */,
+				C6D4072228F3BA89003CDE14 /* AppDelegate.swift */,
+				C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */,
+				C6D4072628F3BA89003CDE14 /* ViewController.swift */,
+				C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */,
+				C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */,
+				C6D4073028F3BA8B003CDE14 /* Info.plist */,
 			);
 			path = Werdd;
+			sourceTree = "<group>";
+		};
+		C6D4073828F46474003CDE14 /* Rubik */ = {
+			isa = PBXGroup;
+			children = (
+				C6D4073D28F46941003CDE14 /* Rubik-Bold.ttf */,
+			);
+			path = Rubik;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C649284E28F0DB8900E543B0 /* Werdd */ = {
+		C6D4071E28F3BA89003CDE14 /* Werdd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C649286328F0DB8F00E543B0 /* Build configuration list for PBXNativeTarget "Werdd" */;
+			buildConfigurationList = C6D4073328F3BA8B003CDE14 /* Build configuration list for PBXNativeTarget "Werdd" */;
 			buildPhases = (
-				C649284B28F0DB8900E543B0 /* Sources */,
-				C649284C28F0DB8900E543B0 /* Frameworks */,
-				C649284D28F0DB8900E543B0 /* Resources */,
+				C6D4071B28F3BA89003CDE14 /* Sources */,
+				C6D4071C28F3BA89003CDE14 /* Frameworks */,
+				C6D4071D28F3BA89003CDE14 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -81,25 +92,25 @@
 			);
 			name = Werdd;
 			productName = Werdd;
-			productReference = C649284F28F0DB8900E543B0 /* Werdd.app */;
+			productReference = C6D4071F28F3BA89003CDE14 /* Werdd.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C649284728F0DB8900E543B0 /* Project object */ = {
+		C6D4071728F3BA89003CDE14 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					C649284E28F0DB8900E543B0 = {
+					C6D4071E28F3BA89003CDE14 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = C649284A28F0DB8900E543B0 /* Build configuration list for PBXProject "Werdd" */;
+			buildConfigurationList = C6D4071A28F3BA89003CDE14 /* Build configuration list for PBXProject "Werdd" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -107,46 +118,47 @@
 				en,
 				Base,
 			);
-			mainGroup = C649284628F0DB8900E543B0;
-			productRefGroup = C649285028F0DB8900E543B0 /* Products */;
+			mainGroup = C6D4071628F3BA89003CDE14;
+			productRefGroup = C6D4072028F3BA89003CDE14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C649284E28F0DB8900E543B0 /* Werdd */,
+				C6D4071E28F3BA89003CDE14 /* Werdd */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C649284D28F0DB8900E543B0 /* Resources */ = {
+		C6D4071D28F3BA89003CDE14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C649285F28F0DB8F00E543B0 /* LaunchScreen.storyboard in Resources */,
-				C649285C28F0DB8F00E543B0 /* Assets.xcassets in Resources */,
+				C6D4073E28F46944003CDE14 /* Rubik-Bold.ttf in Resources */,
+				C6D4072F28F3BA8B003CDE14 /* LaunchScreen.storyboard in Resources */,
+				C6D4072C28F3BA8B003CDE14 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C649284B28F0DB8900E543B0 /* Sources */ = {
+		C6D4071B28F3BA89003CDE14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C649285728F0DB8900E543B0 /* ViewController.swift in Sources */,
-				C649285328F0DB8900E543B0 /* AppDelegate.swift in Sources */,
-				C649285528F0DB8900E543B0 /* SceneDelegate.swift in Sources */,
+				C6D4072728F3BA89003CDE14 /* ViewController.swift in Sources */,
+				C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */,
+				C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C649285D28F0DB8F00E543B0 /* LaunchScreen.storyboard */ = {
+		C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C649285E28F0DB8F00E543B0 /* Base */,
+				C6D4072E28F3BA8B003CDE14 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -154,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C649286128F0DB8F00E543B0 /* Debug */ = {
+		C6D4073128F3BA8B003CDE14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -214,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		C649286228F0DB8F00E543B0 /* Release */ = {
+		C6D4073228F3BA8B003CDE14 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,7 +280,7 @@
 			};
 			name = Release;
 		};
-		C649286428F0DB8F00E543B0 /* Debug */ = {
+		C6D4073428F3BA8B003CDE14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -280,7 +292,6 @@
 				INFOPLIST_FILE = Werdd/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -288,7 +299,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.artadriana.Werdd;
+				PRODUCT_BUNDLE_IDENTIFIER = artadriana.Werdd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -296,7 +307,7 @@
 			};
 			name = Debug;
 		};
-		C649286528F0DB8F00E543B0 /* Release */ = {
+		C6D4073528F3BA8B003CDE14 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -308,7 +319,6 @@
 				INFOPLIST_FILE = Werdd/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -316,7 +326,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.artadriana.Werdd;
+				PRODUCT_BUNDLE_IDENTIFIER = artadriana.Werdd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -327,25 +337,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C649284A28F0DB8900E543B0 /* Build configuration list for PBXProject "Werdd" */ = {
+		C6D4071A28F3BA89003CDE14 /* Build configuration list for PBXProject "Werdd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C649286128F0DB8F00E543B0 /* Debug */,
-				C649286228F0DB8F00E543B0 /* Release */,
+				C6D4073128F3BA8B003CDE14 /* Debug */,
+				C6D4073228F3BA8B003CDE14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C649286328F0DB8F00E543B0 /* Build configuration list for PBXNativeTarget "Werdd" */ = {
+		C6D4073328F3BA8B003CDE14 /* Build configuration list for PBXNativeTarget "Werdd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C649286428F0DB8F00E543B0 /* Debug */,
-				C649286528F0DB8F00E543B0 /* Release */,
+				C6D4073428F3BA8B003CDE14 /* Debug */,
+				C6D4073528F3BA8B003CDE14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C649284728F0DB8900E543B0 /* Project object */;
+	rootObject = C6D4071728F3BA89003CDE14 /* Project object */;
 }
