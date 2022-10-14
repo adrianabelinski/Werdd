@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     return view
   }()
   
-  let stackView: UIStackView = {
+  
+  let stackViewVertical: UIStackView = {
     let stackView = UIStackView()
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
@@ -26,13 +27,25 @@ class ViewController: UIViewController {
     stackView.layer.masksToBounds = true
     return stackView
   }()
+  
+  let stackViewHorizontal: UIStackView = {
+    let stackView = UIStackView()
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.axis = .horizontal
+    stackView.spacing = 10
+    stackView.alignment = .bottom
+    stackView.layer.masksToBounds = true
+    return stackView
+  }()
+  
+  let padding: CGFloat = 20
 
 
   let labelOne: UILabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = "Programming"
-      label.font = UIFont(name: "Rubik-Bold", size: 26)
+      label.font = UIFont(name: "Rubik-Bold", size: 30)
       label.textAlignment = .center
       return label
   }()
@@ -40,8 +53,8 @@ class ViewController: UIViewController {
   let labelTwo: UILabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "Noun"
-      label.font = UIFont(name: "Rubik", size: 10)
+      label.text = "noun"
+      label.font = UIFont(name: "Rubik-Regular", size: 8)
       label.textAlignment = .center
       return label
   }()
@@ -51,7 +64,8 @@ class ViewController: UIViewController {
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = "creating a sequence of instructions to enable the computer to do something."
       label.lineBreakMode = .byWordWrapping
-      label.numberOfLines = 0
+      label.font = UIFont(name: "Rubik-Regular", size: 10)
+      label.numberOfLines = 3
       return label
   }()
   
@@ -60,6 +74,7 @@ class ViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(systemName: "arrow.clockwise.cirle"), for: .normal)
     button.backgroundColor = .white
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
     return button
   }()
   
@@ -72,10 +87,9 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
     view.backgroundColor = UIColor(red: 0.914, green: 0.902, blue: 0.894, alpha: 1) // #e9e6e4
-    view.addSubview(randomButton)
-    setUpNavigationTitle()
+    view.addSubview(randomButton) //adding button
+    setUpNavigationTitle() //title sets up
     addSubviews()
     
   }
@@ -83,7 +97,8 @@ class ViewController: UIViewController {
   func addSubviews() {
    // view.addSubview(titleLabel) //view is an aspect of UIView controller
     view.addSubview(blueView)
-    blueView.addSubview(stackView)
+    blueView.addSubview(stackViewHorizontal)
+    blueView.addSubview(labelThree)
     
     NSLayoutConstraint.activate([
       blueView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
@@ -91,15 +106,31 @@ class ViewController: UIViewController {
       blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       blueView.heightAnchor.constraint(equalTo: blueView.widthAnchor),
       
-      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+      stackViewHorizontal.topAnchor.constraint(equalTo: blueView.topAnchor, constant: padding),
+      stackViewHorizontal.leadingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: padding),
       
+     // labelTwo.topAnchor.constraint(equalTo: labelOne.centerYAnchor, constant: 0),
+      
+      labelThree.topAnchor.constraint(equalTo: stackViewHorizontal.bottomAnchor, constant: padding),
+      labelThree.leadingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: padding),
+      labelThree.trailingAnchor.constraint(equalTo: blueView.trailingAnchor, constant: -padding),
+      
+      randomButton.bottomAnchor.constraint(equalTo: blueView.bottomAnchor, constant: -padding),
+      randomButton.trailingAnchor.constraint(equalTo: blueView.trailingAnchor, constant: -padding),
+      
+      
+
                 ])
       
-    stackView.addArrangedSubview(labelOne)
-    stackView.addArrangedSubview(labelTwo)
-    stackView.addArrangedSubview(labelThree)
-    stackView.addArrangedSubview(randomButton)
+    stackViewHorizontal.addArrangedSubview(labelOne)
+    stackViewHorizontal.addArrangedSubview(labelTwo)
+    
+  //  stackView.addArrangedSubview(labelThree)
+  //  stackView.addArrangedSubview(randomButton)
 
     
   }
 }
+
+//make button own floating thing and pin to bottom right of blue view.
+//May need to  not use stacks on label one and two.

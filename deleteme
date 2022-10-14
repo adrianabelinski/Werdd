@@ -1,0 +1,61 @@
+
+import UIKit
+
+class ViewController: UIViewController {
+  
+  
+  let titleLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont(name: "Rubik-Bold", size: 40)
+    label.text = "Werdd."
+    label.textColor = .black
+    return label
+  }()
+  
+  let definitionLabel: UIStackView = {
+    let stackView = UIStackView()
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.layer.masksToBounds = true
+    stackView.layer.cornerRadius = 25
+    stackView.backgroundColor = UIColor(red: 0.208, green: 0.506, blue: 0.722, alpha: 0.6) // #3581b8
+    return stackView
+  }()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configureTitleLabel()
+    // Do any additional setup after loading the view.
+    view.backgroundColor = UIColor(red: 0.914, green: 0.902, blue: 0.894, alpha: 1) // #e9e6e4
+  }
+
+  func configureStackView() { 
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.layer.masksToBounds = true
+    label.layer.cornerRadius = 25
+    label.text = "creating a sequence of instructions to enable the computer to do something."
+    label.textAlignment = .left
+    label.backgroundColor = UIColor(red: 0.208, green: 0.506, blue: 0.722, alpha: 0.6) // #3581b8
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0 //computer gets to decide
+    return label
+  }
+
+  
+
+
+
+   func configureTitleLabel() {
+
+    label.font = UIFont(name: "Rubik-Bold", size: 40)
+    label.text = "Werdd."
+    label.textColor = .black
+    return label
+   }
+    
+    
+  }
+
+}
+
