@@ -69,14 +69,16 @@ class ViewController: UIViewController {
       return label
   }()
   
+  
+  
   let randomButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(systemName: "arrow.clockwise.cirle"), for: .normal)
-    button.backgroundColor = .white
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+    button.backgroundColor = .red
     return button
   }()
+  
   
   func setUpNavigationTitle() {
     title = "Werdd"
@@ -117,9 +119,10 @@ class ViewController: UIViewController {
       
       randomButton.bottomAnchor.constraint(equalTo: blueView.bottomAnchor, constant: -padding),
       randomButton.trailingAnchor.constraint(equalTo: blueView.trailingAnchor, constant: -padding),
+      randomButton.heightAnchor.constraint(equalToConstant: 50),
+      randomButton.widthAnchor.constraint(equalToConstant: 50),
       
       
-
                 ])
       
     stackViewHorizontal.addArrangedSubview(labelOne)
@@ -130,6 +133,7 @@ class ViewController: UIViewController {
 
     
   }
+  
 }
 
 //make button own floating thing and pin to bottom right of blue view.
