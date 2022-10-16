@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C6B886DA28F8ED6E00BB6079 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C67636FA28F8E71F00D8282E /* Rubik-Bold.ttf */; };
 		C6B886DC28F8ED9A00BB6079 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */; };
+		C6B8870128FC516F00BB6079 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */; };
+		C6B8870328FC517D00BB6079 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870228FC517D00BB6079 /* Rubik-Light.ttf */; };
+		C6B8870528FC519300BB6079 /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870428FC519300BB6079 /* Rubik-SemiBold.ttf */; };
 		C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072228F3BA89003CDE14 /* AppDelegate.swift */; };
 		C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */; };
 		C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072628F3BA89003CDE14 /* HomeViewController.swift */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		C67636FA28F8E71F00D8282E /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Bold.ttf"; path = "Rubik(2)/static/Rubik-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Regular.ttf"; path = "Rubik(2)/static/Rubik-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
+		C6B8870228FC517D00BB6079 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		C6B8870428FC519300BB6079 /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
 		C6D4071F28F3BA89003CDE14 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D4072228F3BA89003CDE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,9 @@
 		C6D4073828F46474003CDE14 /* Rubik */ = {
 			isa = PBXGroup;
 			children = (
+				C6B8870428FC519300BB6079 /* Rubik-SemiBold.ttf */,
+				C6B8870228FC517D00BB6079 /* Rubik-Light.ttf */,
+				C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */,
 				C67636FA28F8E71F00D8282E /* Rubik-Bold.ttf */,
 				C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */,
 			);
@@ -137,9 +146,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6D4072F28F3BA8B003CDE14 /* LaunchScreen.storyboard in Resources */,
+				C6B8870328FC517D00BB6079 /* Rubik-Light.ttf in Resources */,
+				C6B8870128FC516F00BB6079 /* Rubik-Italic.ttf in Resources */,
 				C6B886DC28F8ED9A00BB6079 /* Rubik-Regular.ttf in Resources */,
 				C6B886DA28F8ED6E00BB6079 /* Rubik-Bold.ttf in Resources */,
 				C6D4072C28F3BA8B003CDE14 /* Assets.xcassets in Resources */,
+				C6B8870528FC519300BB6079 /* Rubik-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
