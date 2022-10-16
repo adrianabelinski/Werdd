@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
   
   let blueView: UIView = {
     let view = UIView()
@@ -72,12 +72,25 @@ class ViewController: UIViewController {
   
   
   let randomButton: UIButton = {
+    let largeConfig = UIImage.SymbolConfiguration(
+      pointSize: 140,
+      weight: .regular,
+      scale: .large
+    )
+    
+    let image = UIImage(
+      systemName: "arrow.clockwise.circle",
+      withConfiguration: largeConfig
+    )?.withTintColor(.white, renderingMode: .alwaysTemplate)
+    
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setImage(UIImage(systemName: "arrow.clockwise.cirle"), for: .normal)
-    button.backgroundColor = .red
+    button.setImage(image, for: .normal)
+    button.tintColor = .white
     return button
   }()
+  
+  
   
   
   func setUpNavigationTitle() {
@@ -90,7 +103,6 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = UIColor(red: 0.914, green: 0.902, blue: 0.894, alpha: 1) // #e9e6e4
-    view.addSubview(randomButton) //adding button
     setUpNavigationTitle() //title sets up
     addSubviews()
     
@@ -99,6 +111,7 @@ class ViewController: UIViewController {
   func addSubviews() {
    // view.addSubview(titleLabel) //view is an aspect of UIView controller
     view.addSubview(blueView)
+    blueView.addSubview(randomButton)
     blueView.addSubview(stackViewHorizontal)
     blueView.addSubview(labelThree)
     

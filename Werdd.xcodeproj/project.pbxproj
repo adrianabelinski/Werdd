@@ -11,7 +11,7 @@
 		C6B886DC28F8ED9A00BB6079 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */; };
 		C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072228F3BA89003CDE14 /* AppDelegate.swift */; };
 		C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */; };
-		C6D4072728F3BA89003CDE14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072628F3BA89003CDE14 /* ViewController.swift */; };
+		C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072628F3BA89003CDE14 /* HomeViewController.swift */; };
 		C6D4072C28F3BA8B003CDE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */; };
 		C6D4072F28F3BA8B003CDE14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,7 +22,7 @@
 		C6D4071F28F3BA89003CDE14 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D4072228F3BA89003CDE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C6D4072628F3BA89003CDE14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C6D4072628F3BA89003CDE14 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6D4072E28F3BA8B003CDE14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6D4073028F3BA8B003CDE14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				C6D4073828F46474003CDE14 /* Rubik */,
 				C6D4072228F3BA89003CDE14 /* AppDelegate.swift */,
 				C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */,
-				C6D4072628F3BA89003CDE14 /* ViewController.swift */,
+				C6D4072628F3BA89003CDE14 /* HomeViewController.swift */,
 				C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */,
 				C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */,
 				C6D4073028F3BA8B003CDE14 /* Info.plist */,
@@ -150,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6D4072728F3BA89003CDE14 /* ViewController.swift in Sources */,
+				C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */,
 				C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */,
 				C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */,
 			);
