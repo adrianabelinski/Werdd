@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
   let dictionaryTableView: UITableView = {
     let dictionaryTableView = UITableView()
     dictionaryTableView.translatesAutoresizingMaskIntoConstraints = false
+    dictionaryTableView.layer.cornerRadius = 20
     return dictionaryTableView
   }()
   
@@ -82,13 +83,7 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    dictionaryTableView.dataSource = self //self describes ViewController which our UITAbleViewSource delegrates work out to.
-    
-    dictionaryTableView.delegate = self
-    
-    // view.addSubview(allDictionaryWords)
-    
+
     view.backgroundColor = UIColor(named: "Taupe")
     
     setUpNavigationTitle()
@@ -164,10 +159,12 @@ class HomeViewController: UIViewController {
   }
   
   func setUpDictionaryTableView() {
-    containerView.addSubview(dictionaryTableView)
+    view.addSubview(dictionaryTableView)
+    dictionaryTableView.dataSource = self
+    dictionaryTableView.delegate = self
     
     NSLayoutConstraint.activate([
-      dictionaryTableView.topAnchor.constraint(equalTo: view.topAnchor),
+      dictionaryTableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
       dictionaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       dictionaryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       dictionaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
