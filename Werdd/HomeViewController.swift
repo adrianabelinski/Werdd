@@ -7,11 +7,6 @@
 
 import UIKit
 
-struct Dictionary {
-  let wordTitle: String
-  let partsOfSpeech: String
-  let wordDefinition: String
-}
 
 class HomeViewController: UIViewController {
   // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
@@ -22,20 +17,6 @@ class HomeViewController: UIViewController {
     title = "Werdd"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
-  
-  let dictionaryWords: [Dictionary] = [
-    Dictionary(wordTitle: "Coding", partsOfSpeech: "verb", wordDefinition: "the process of assigning a code to something for classification or identification."),
-    Dictionary(wordTitle: "Software", partsOfSpeech: "noun", wordDefinition: "written programs or procedures or rules and associated documentation pertaining to the operation of a computer system and that are stored in read/write memory."),
-    Dictionary(wordTitle: "Array", partsOfSpeech: "noun", wordDefinition: "a collection of similar types of data."),
-    Dictionary(wordTitle: "Terminal", partsOfSpeech: "noun", wordDefinition: "a device at which a user enters data or commands for a computer system and which displays the received output."),
-    Dictionary(wordTitle: "Programming", partsOfSpeech: "verb", wordDefinition: "creating a sequence of instructions to enable the computer to do something."),
-    Dictionary(wordTitle: "Command", partsOfSpeech: "noun", wordDefinition: "an instruction for the computer. Many commands put together make up algorithms and computer programs. "),
-    Dictionary(wordTitle: "Debugging", partsOfSpeech: "verb", wordDefinition: "finding and fixing problems in an algorithm or program."),
-    Dictionary(wordTitle: "Digital Footprint", partsOfSpeech: "noun", wordDefinition: "the information about someone on the Internet."),
-    Dictionary(wordTitle: "Event Handler", partsOfSpeech: "noun", wordDefinition: "a monitor for a specific event or action on a computer. When you write code for an event handler, it will be executed every time that event or action occurs. Many event-handlers respond to human actions such as mouse clicks."),
-    Dictionary(wordTitle: "F.A.I.L.", partsOfSpeech: "noun", wordDefinition: "First Attempt In Learning "),
-    Dictionary(wordTitle: "Function Call", partsOfSpeech: "noun", wordDefinition: "the piece of code that you add to a program to indicate that the program should run the code inside a function at a certain time. ")
-  ]
   
   let containerView: UIView = {
     let view = UIView()
@@ -68,7 +49,6 @@ class HomeViewController: UIViewController {
       return label
   }()
   
-  
   let randomButton: UIButton = {
       let largeConfig = UIImage.SymbolConfiguration(
       pointSize: 140,
@@ -83,11 +63,17 @@ class HomeViewController: UIViewController {
     
       let button = UIButton()
       button.translatesAutoresizingMaskIntoConstraints = false
-      button.addTarget(self, action: #selector(randomButtonPressed), for: .touchUpInside)
       button.setImage(image, for: .normal)
       button.tintColor = .white
       return button
   }()
+  
+  let dictionaryTableView: UITableView = {
+    let dictionaryTableView = UITableView()
+    dictionaryTableView.translatesAutoresizingMaskIntoConstraints = false
+    return dictionaryTableView
+  }()
+  
   
   let padding: CGFloat = 20
 
@@ -97,12 +83,18 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    dictionaryTableView.dataSource = self //self describes ViewController which our UITAbleViewSource delegrates work out to.
+    
+    dictionaryTableView.delegate = self
+    
+   // view.addSubview(allDictionaryWords)
+    
     view.backgroundColor = UIColor(named: "Taupe")
 
     setUpNavigationTitle()
     setUpUI()
     
-    if let word = dictionaryWords.first {
+    if let word = Dictionary.allWords.first {
     updateViews(withWord: word)
     }
   }
@@ -115,6 +107,7 @@ class HomeViewController: UIViewController {
     setUpPartsOfSpeech()
     setUpDefinition()
     setUpRandomButton()
+    setUpDictionaryTableView()
   }
 
   func setUpContainerView() {
@@ -159,6 +152,8 @@ class HomeViewController: UIViewController {
   
     func setUpRandomButton() {
       containerView.addSubview(randomButton)
+    
+      randomButton.addTarget(self, action: #selector(randomButtonPressed), for: .touchUpInside)
       
       NSLayoutConstraint.activate([
         randomButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
@@ -168,21 +163,59 @@ class HomeViewController: UIViewController {
         ])
   }
   
+  func setUpDictionaryTableView() {
+    containerView.addSubview(dictionaryTableView)
+
+    NSLayoutConstraint.activate([
+      dictionaryTableView.topAnchor.constraint(equalTo: view.topAnchor),
+      dictionaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      dictionaryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      dictionaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    ])
+  }
+  
   @objc func randomButtonPressed() {
     
     if let randomWord = randomizedWord() {
       updateViews(withWord: randomWord)
     }
+    
   }
   
-  func randomizedWord() -> Dictionary? {
-      return dictionaryWords.randomElement()
+  func randomizedWord() -> Entry? {
+    return Dictionary.allWords.randomElement()
   }
   
-  func updateViews(withWord word: Dictionary) {
+  func updateViews(withWord word: Entry) {
       wordTitleLabel.text = word.wordTitle
       partsOfSpeechLabel.text = word.partsOfSpeech
       wordDefinitionLabel.text = word.wordDefinition
   }
 }
 
+
+
+
+extension HomeViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   // return 10
+    return Dictionary.allWords.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = UITableViewCell() //creating cell objects because that's what ViewController wants returned above.
+    var content = cell.defaultContentConfiguration()
+    
+    content.text = Dictionary.allWords[indexPath.row].wordTitle
+    content.secondaryText = Dictionary.allWords[indexPath.row].wordDefinition
+
+    cell.contentConfiguration = content
+    return cell
+  }
+}
+
+extension HomeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print("\(Dictionary.allWords[indexPath.row].wordTitle)")
+  }
+}
