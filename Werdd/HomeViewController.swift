@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct Dictionary {
+  let wordTitle: String
+  let partsOfSpeech: String
+  let wordDefinition: String
+}
+
 class HomeViewController: UIViewController {
   // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
   
@@ -16,6 +22,20 @@ class HomeViewController: UIViewController {
     title = "Werdd"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
+  
+  let dictionaryWords: [Dictionary] = [
+    Dictionary(wordTitle: "Coding", partsOfSpeech: "verb", wordDefinition: "the process of assigning a code to something for classification or identification."),
+    Dictionary(wordTitle: "Software", partsOfSpeech: "noun", wordDefinition: "written programs or procedures or rules and associated documentation pertaining to the operation of a computer system and that are stored in read/write memory."),
+    Dictionary(wordTitle: "Array", partsOfSpeech: "noun", wordDefinition: "a collection of similar types of data."),
+    Dictionary(wordTitle: "Terminal", partsOfSpeech: "noun", wordDefinition: "a device at which a user enters data or commands for a computer system and which displays the received output."),
+    Dictionary(wordTitle: "Programming", partsOfSpeech: "verb", wordDefinition: "creating a sequence of instructions to enable the computer to do something."),
+    Dictionary(wordTitle: "Command", partsOfSpeech: "noun", wordDefinition: "an instruction for the computer. Many commands put together make up algorithms and computer programs. "),
+    Dictionary(wordTitle: "Debugging", partsOfSpeech: "verb", wordDefinition: "finding and fixing problems in an algorithm or program."),
+    Dictionary(wordTitle: "Digital Footprint", partsOfSpeech: "noun", wordDefinition: "the information about someone on the Internet."),
+    Dictionary(wordTitle: "Event Handler", partsOfSpeech: "noun", wordDefinition: "a monitor for a specific event or action on a computer. When you write code for an event handler, it will be executed every time that event or action occurs. Many event-handlers respond to human actions such as mouse clicks."),
+    Dictionary(wordTitle: "F.A.I.L.", partsOfSpeech: "noun", wordDefinition: "First Attempt In Learning "),
+    Dictionary(wordTitle: "Function Call", partsOfSpeech: "noun", wordDefinition: "the piece of code that you add to a program to indicate that the program should run the code inside a function at a certain time. ")
+  ]
   
   let containerView: UIView = {
     let view = UIView()
@@ -28,7 +48,6 @@ class HomeViewController: UIViewController {
   let wordTitleLabel: UILabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "Programming"
       label.font = UIFont(name: "Rubik-Bold", size: 24)
       return label
   }()
@@ -36,7 +55,6 @@ class HomeViewController: UIViewController {
   let partsOfSpeechLabel: UILabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "noun"
       label.font = UIFont(name: "Rubik-Italic", size: 14)
       return label
   }()
@@ -44,7 +62,6 @@ class HomeViewController: UIViewController {
   let wordDefinitionLabel: UILabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "creating a sequence of instructions to enable the computer to do something."
       label.font = UIFont(name: "Rubik-Light", size: 18)
       label.lineBreakMode = .byWordWrapping
       label.numberOfLines = 0
@@ -66,15 +83,17 @@ class HomeViewController: UIViewController {
     
       let button = UIButton()
       button.translatesAutoresizingMaskIntoConstraints = false
+      button.addTarget(self, action: #selector(randomButtonPressed), for: .touchUpInside)
       button.setImage(image, for: .normal)
       button.tintColor = .white
       return button
   }()
   
-  // MARK: - Lifecycle
-  
   let padding: CGFloat = 20
 
+  
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -82,6 +101,10 @@ class HomeViewController: UIViewController {
 
     setUpNavigationTitle()
     setUpUI()
+    
+    if let word = dictionaryWords.first {
+    updateViews(withWord: word)
+    }
   }
   
   // MARK: - UI Setup
@@ -144,4 +167,22 @@ class HomeViewController: UIViewController {
         randomButton.widthAnchor.constraint(equalToConstant: 50),
         ])
   }
+  
+  @objc func randomButtonPressed() {
+    
+    if let randomWord = randomizedWord() {
+      updateViews(withWord: randomWord)
+    }
+  }
+  
+  func randomizedWord() -> Dictionary? {
+      return dictionaryWords.randomElement()
+  }
+  
+  func updateViews(withWord word: Dictionary) {
+      wordTitleLabel.text = word.wordTitle
+      partsOfSpeechLabel.text = word.partsOfSpeech
+      wordDefinitionLabel.text = word.wordDefinition
+  }
 }
+
