@@ -74,6 +74,7 @@ class HomeViewController: UIViewController {
     let dictionaryTableView = UITableView()
     dictionaryTableView.translatesAutoresizingMaskIntoConstraints = false
     dictionaryTableView.layer.cornerRadius = 20
+    dictionaryTableView.separatorStyle = .none
     return dictionaryTableView
   }()
   
