@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
   
   // MARK: - Properties
   
+  let alphabetizedWords = Dictionary.allWords.sorted(by: {$0.wordTitle < $1.wordTitle})
+  
   func setUpNavigationTitle() {
     title = "Werdd"
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -89,10 +91,11 @@ class HomeViewController: UIViewController {
     setUpNavigationTitle()
     setUpUI()
     
-    if let word = Dictionary.allWords.first {
+    if let word = alphabetizedWords.first {
       updateViews(withWord: word)
     }
   }
+  
   
   // MARK: - UI Setup
   
@@ -176,11 +179,11 @@ class HomeViewController: UIViewController {
     if let randomWord = randomizedWord() {
       updateViews(withWord: randomWord)
     }
-    
+  
   }
   
   func randomizedWord() -> Entry? {
-    return Dictionary.allWords.randomElement()
+    return alphabetizedWords.randomElement()
   }
   
   func updateViews(withWord word: Entry) {
@@ -196,15 +199,15 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // return 10
-    return Dictionary.allWords.count
+    return alphabetizedWords.count //we tell table how many rows we want
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell() //creating cell objects because that's what ViewController wants returned above.
     var content = cell.defaultContentConfiguration()
     
-    content.text = Dictionary.allWords[indexPath.row].wordTitle
-    content.secondaryText = Dictionary.allWords[indexPath.row].wordDefinition
+    content.text = alphabetizedWords[indexPath.row].wordTitle
+    content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
     
     cell.contentConfiguration = content
     return cell
@@ -213,6 +216,9 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("\(Dictionary.allWords[indexPath.row].wordTitle)")
+    print("\(alphabetizedWords[indexPath.row].wordTitle)")
+    
+    // display UIAlertController
   }
 }
+

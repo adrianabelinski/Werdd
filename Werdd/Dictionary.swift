@@ -26,5 +26,5 @@ struct Dictionary {
     Entry(wordTitle: "Event Handler", partsOfSpeech: "noun", wordDefinition: "a monitor for a specific event or action on a computer. When you write code for an event handler, it will be executed every time that event or action occurs. Many event-handlers respond to human actions such as mouse clicks."),
     Entry(wordTitle: "F.A.I.L.", partsOfSpeech: "noun", wordDefinition: "First Attempt In Learning "),
     Entry(wordTitle: "Function Call", partsOfSpeech: "noun", wordDefinition: "the piece of code that you add to a program to indicate that the program should run the code inside a function at a certain time. ")
-  ]
+  ]//.sorted(by: {$0.wordTitle < $1.wordTitle})
 }
