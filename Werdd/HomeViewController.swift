@@ -204,13 +204,21 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell() //creating cell objects because that's what ViewController wants returned above.
-    var content = cell.defaultContentConfiguration()
+    let cell = OrangeTableViewCell() //creating cell objects because that's what ViewController wants returned above. Boring, white cell.
+    
+   /* var content = cell.defaultContentConfiguration()
     
     content.text = alphabetizedWords[indexPath.row].wordTitle
     content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
-    
+
     cell.contentConfiguration = content
+    */
+    
+    cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle //we want wordLabel to be wordTitle from alphabetized words.
+    cell.partOfSpeechLabel.text = alphabetizedWords[indexPath.row].partsOfSpeech
+    cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
+    
+
     return cell
   }
 }
