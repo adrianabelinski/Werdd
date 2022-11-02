@@ -40,6 +40,14 @@ class OrangeTableViewCell: UITableViewCell {
     return label
   }()
   
+  var orangeContainerView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.backgroundColor = .orange
+    view.layer.cornerRadius = 16
+    return view
+  }()
+  
 //  var backgroundColor: UIView = {
 //    let view = UIView()
 //    label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,38 +70,49 @@ class OrangeTableViewCell: UITableViewCell {
   // MARK: - UI Setup
 
   private func setUpUI() {
-    
+    setUpOrangeContainerView()
     setUpWordLabel()
     setUpPartsOfSpeechLabel()
     setUpDefinitionLabel()
   }
   
-  func setUpWordLabel() {
-    contentView.addSubview(wordLabel)
+  func setUpOrangeContainerView(){
+    contentView.addSubview(orangeContainerView)
     
     NSLayoutConstraint.activate([
-      wordLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      wordLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      orangeContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      orangeContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+      orangeContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      orangeContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+    ])
+  }
+  
+  func setUpWordLabel() {
+    orangeContainerView.addSubview(wordLabel)
+    
+    NSLayoutConstraint.activate([
+      wordLabel.topAnchor.constraint(equalTo: orangeContainerView.topAnchor, constant: 10),
+      wordLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 20),
     ])
   }
   
   func setUpPartsOfSpeechLabel() {
-    contentView.addSubview(partOfSpeechLabel)
+    orangeContainerView.addSubview(partOfSpeechLabel)
     
     NSLayoutConstraint.activate([
-      partOfSpeechLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+      partOfSpeechLabel.topAnchor.constraint(equalTo: orangeContainerView.topAnchor, constant: 15),
       partOfSpeechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 5),
     ])
   }
   
   func setUpDefinitionLabel() {
-    contentView.addSubview(definitionLabel)
+    orangeContainerView.addSubview(definitionLabel) // Content view is special view declaired in UITableViewCell so it can't be fully customized.
     
     NSLayoutConstraint.activate([
       definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
-      definitionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-      definitionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      definitionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      definitionLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 20),
+      definitionLabel.bottomAnchor.constraint(equalTo: orangeContainerView.bottomAnchor, constant: -10),
+      definitionLabel.trailingAnchor.constraint(equalTo: orangeContainerView.trailingAnchor),
     ])
   }
   
