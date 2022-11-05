@@ -92,6 +92,8 @@ class HomeViewController: UIViewController {
     setUpNavigationTitle()
     setUpUI()
     
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back")
+    
     if let word = alphabetizedWords.first {
       updateViews(withWord: word)
     }
@@ -100,7 +102,7 @@ class HomeViewController: UIViewController {
   
   // MARK: - UI Setup
   
-  func setUpUI() { //view is an aspect of UIView controller
+  func setUpUI() { // view is an aspect of UIView controller
     setUpContainerView()
     setUpWordTitle()
     setUpPartsOfSpeech()

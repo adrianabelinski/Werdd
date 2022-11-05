@@ -63,9 +63,7 @@ class DetailViewController: UIViewController {
     setUpSynonymView()
     setUpAntonymView()
     setUpExampleView()
-
   }
-  
   
   func setUpPartOfSpeechView() {
     view.addSubview(partOfSpeechView)
