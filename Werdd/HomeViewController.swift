@@ -86,7 +86,7 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+  
     view.backgroundColor = UIColor(named: "Taupe")
     
     setUpNavigationTitle()
@@ -214,6 +214,7 @@ extension HomeViewController: UITableViewDataSource {
     cell.contentConfiguration = content
     */
     
+    
     cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle //we want wordLabel to be wordTitle from alphabetized words.
     cell.partOfSpeechLabel.text = alphabetizedWords[indexPath.row].partsOfSpeech
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
@@ -227,7 +228,8 @@ extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("\(alphabetizedWords[indexPath.row].wordTitle)")
     
-    // display UIAlertController
+    navigationController?.pushViewController(DetailViewController(), animated: true)
+
   }
 }
 

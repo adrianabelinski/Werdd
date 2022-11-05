@@ -43,7 +43,7 @@ class OrangeTableViewCell: UITableViewCell {
   var orangeContainerView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = .orange
+    view.backgroundColor = UIColor(named: "Orange")
     view.layer.cornerRadius = 16
     return view
   }()
