@@ -51,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6CDD045291726A600F2DD15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C6D4073828F46474003CDE14 /* Rubik */,
+				C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */,
+				C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */,
+				C6D4073028F3BA8B003CDE14 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C6D4071628F3BA89003CDE14 = {
 			isa = PBXGroup;
 			children = (
@@ -70,15 +81,12 @@
 		C6D4072128F3BA89003CDE14 /* Werdd */ = {
 			isa = PBXGroup;
 			children = (
-				C6D4073828F46474003CDE14 /* Rubik */,
+				C6CDD045291726A600F2DD15 /* Resources */,
 				C6D4072228F3BA89003CDE14 /* AppDelegate.swift */,
 				C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */,
 				C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */,
 				C6D4072628F3BA89003CDE14 /* HomeViewController.swift */,
 				C6CDD0432915F41400F2DD15 /* DetailViewController.swift */,
-				C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */,
-				C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */,
-				C6D4073028F3BA8B003CDE14 /* Info.plist */,
 				C6B8876829004B6B00BB6079 /* Dictionary.swift */,
 			);
 			path = Werdd;
