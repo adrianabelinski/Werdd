@@ -64,6 +64,41 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C6CDD04A2917330900F2DD15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C6CDD0462917328A00F2DD15 /* Entry.swift */,
+				C6B8876829004B6B00BB6079 /* Dictionary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C6CDD04B2917331400F2DD15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6D4072628F3BA89003CDE14 /* HomeViewController.swift */,
+				C6CDD0432915F41400F2DD15 /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C6CDD04C2917333200F2DD15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C6CDD04D2917334700F2DD15 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C6D4072228F3BA89003CDE14 /* AppDelegate.swift */,
+				C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		C6D4071628F3BA89003CDE14 = {
 			isa = PBXGroup;
 			children = (
@@ -84,13 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				C6CDD045291726A600F2DD15 /* Resources */,
-				C6D4072228F3BA89003CDE14 /* AppDelegate.swift */,
-				C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */,
-				C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */,
-				C6D4072628F3BA89003CDE14 /* HomeViewController.swift */,
-				C6CDD0432915F41400F2DD15 /* DetailViewController.swift */,
-				C6CDD0462917328A00F2DD15 /* Entry.swift */,
-				C6B8876829004B6B00BB6079 /* Dictionary.swift */,
+				C6CDD04D2917334700F2DD15 /* Application */,
+				C6CDD04C2917333200F2DD15 /* Views */,
+				C6CDD04B2917331400F2DD15 /* ViewControllers */,
+				C6CDD04A2917330900F2DD15 /* Models */,
 			);
 			path = Werdd;
 			sourceTree = "<group>";
