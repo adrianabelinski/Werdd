@@ -12,11 +12,9 @@ class DetailViewController: UIViewController {
   
   // MARK: - Properties
   
-  let partOfSpeechView: UIView = {
-    let view = UIView()
+  let definitionView: DetailDefintionView = { //used to be UIView, but now it's our custom view
+    let view = DetailDefintionView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = UIColor(named: "Navy")
-    view.layer.cornerRadius = 20
     return view
   }()
   
@@ -66,19 +64,19 @@ class DetailViewController: UIViewController {
   }
   
   func setUpPartOfSpeechView() {
-    view.addSubview(partOfSpeechView)
+    view.addSubview(definitionView)
     NSLayoutConstraint.activate([
-      partOfSpeechView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-      partOfSpeechView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      partOfSpeechView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-      partOfSpeechView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
+      definitionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+      definitionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      definitionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+      definitionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
   
   func setUpSynonymView() {
     view.addSubview(synonymView)
     NSLayoutConstraint.activate([
-      synonymView.topAnchor.constraint(equalTo: partOfSpeechView.bottomAnchor, constant: 20),
+      synonymView.topAnchor.constraint(equalTo: definitionView.bottomAnchor, constant: 20),
       synonymView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       synonymView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
       synonymView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)

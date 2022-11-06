@@ -11,8 +11,6 @@ import UIKit
 class OrangeTableViewCell: UITableViewCell {
   
   
-  
-  
   // MARK: - UI Properties
   
   var wordLabel: UILabel = {
