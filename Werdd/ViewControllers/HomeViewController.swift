@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
     return label
   }()
   
-  let partsOfSpeechLabel: UILabel = {
+  let partOfSpeechLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont(name: "Rubik-Italic", size: 14)
@@ -132,12 +132,12 @@ class HomeViewController: UIViewController {
   }
   
   func setUpPartsOfSpeech() {
-    containerView.addSubview(partsOfSpeechLabel)
+    containerView.addSubview(partOfSpeechLabel)
     
     NSLayoutConstraint.activate([
-      partsOfSpeechLabel.bottomAnchor.constraint(equalTo: wordTitleLabel.bottomAnchor, constant: -4),
-      partsOfSpeechLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.trailingAnchor, constant: 5),
-      partsOfSpeechLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor)
+      partOfSpeechLabel.bottomAnchor.constraint(equalTo: wordTitleLabel.bottomAnchor, constant: -4),
+      partOfSpeechLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.trailingAnchor, constant: 5),
+      partOfSpeechLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor)
     ])
   }
   
@@ -145,7 +145,7 @@ class HomeViewController: UIViewController {
     containerView.addSubview(wordDefinitionLabel)
     
     NSLayoutConstraint.activate([
-      wordDefinitionLabel.topAnchor.constraint(equalTo: partsOfSpeechLabel.bottomAnchor, constant: 20),
+      wordDefinitionLabel.topAnchor.constraint(equalTo: partOfSpeechLabel.bottomAnchor, constant: 20),
       wordDefinitionLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.leadingAnchor),
       wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
     ])
@@ -191,7 +191,18 @@ class HomeViewController: UIViewController {
   
   func updateViews(withWord word: Entry) {
     wordTitleLabel.text = word.wordTitle
-    partsOfSpeechLabel.text = word.partsOfSpeech
+    //partOfSpeechLabel.text = word.partOfSpeech
+    /*We're taking this partOfSpeechLabel and fixing it too. */
+    
+    let partOfSpeechString: String
+    switch word.partOfSpeech {
+    case .noun: partOfSpeechString = "noun"
+    case .verb: partOfSpeechString = "verb"
+    case .adjective: partOfSpeechString = "adjective"
+    }
+    
+    partOfSpeechLabel.text = partOfSpeechString
+    
     wordDefinitionLabel.text = word.wordDefinition
   }
 }
@@ -218,7 +229,16 @@ extension HomeViewController: UITableViewDataSource {
     
     
     cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle //we want wordLabel to be wordTitle from alphabetized words.
-    cell.partOfSpeechLabel.text = alphabetizedWords[indexPath.row].partsOfSpeech
+    
+    let partOfSpeechString: String
+    switch alphabetizedWords[indexPath.row].partOfSpeech {
+    case .noun: partOfSpeechString = "noun"
+    case .verb: partOfSpeechString = "verb"
+    case .adjective: partOfSpeechString = "adjective"
+    }
+    // the Entry model can have just 1 property that says what part of speech the entry is and it can be an enum. And with this enum, there's other benefits. You can't make a typo. Then view controllers can see the enum and then choose how to display part of speech.
+    
+    cell.partOfSpeechLabel.text = partOfSpeechString
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
     
 

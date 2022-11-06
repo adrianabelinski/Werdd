@@ -8,8 +8,14 @@
 import Foundation
 
 struct Entry {
+  enum PartOfSpeech {
+    case noun
+    case adjective
+    case verb
+  }
+  
   let wordTitle: String
-  let partsOfSpeech: String
+  let partOfSpeech: PartOfSpeech
   let wordDefinition: String
   let synonyms: [String]
   let antonyms: [String]
