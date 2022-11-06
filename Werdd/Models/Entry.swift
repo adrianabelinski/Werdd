@@ -11,4 +11,7 @@ struct Entry {
   let wordTitle: String
   let partsOfSpeech: String
   let wordDefinition: String
+  let synonyms: [String]
+  let antonyms: [String]
+  let examples: [String]
 }
