@@ -16,6 +16,10 @@
 		C6CB0655291092AF00D8CB17 /* OrangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */; };
 		C6CDD0442915F41400F2DD15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0432915F41400F2DD15 /* DetailViewController.swift */; };
 		C6CDD0472917328A00F2DD15 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0462917328A00F2DD15 /* Entry.swift */; };
+		C6CDD04F29185E5F00F2DD15 /* DetailDefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD04E29185E5F00F2DD15 /* DetailDefinitionView.swift */; };
+		C6CDD05129185E6B00F2DD15 /* DetailSynonymsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD05029185E6B00F2DD15 /* DetailSynonymsView.swift */; };
+		C6CDD05329185E7600F2DD15 /* DetailAntonymsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD05229185E7600F2DD15 /* DetailAntonymsView.swift */; };
+		C6CDD05529185E7E00F2DD15 /* DetailExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD05429185E7E00F2DD15 /* DetailExampleView.swift */; };
 		C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072228F3BA89003CDE14 /* AppDelegate.swift */; };
 		C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */; };
 		C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D4072628F3BA89003CDE14 /* HomeViewController.swift */; };
@@ -33,6 +37,10 @@
 		C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTableViewCell.swift; sourceTree = "<group>"; };
 		C6CDD0432915F41400F2DD15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C6CDD0462917328A00F2DD15 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		C6CDD04E29185E5F00F2DD15 /* DetailDefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDefinitionView.swift; sourceTree = "<group>"; };
+		C6CDD05029185E6B00F2DD15 /* DetailSynonymsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSynonymsView.swift; sourceTree = "<group>"; };
+		C6CDD05229185E7600F2DD15 /* DetailAntonymsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAntonymsView.swift; sourceTree = "<group>"; };
+		C6CDD05429185E7E00F2DD15 /* DetailExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExampleView.swift; sourceTree = "<group>"; };
 		C6D4071F28F3BA89003CDE14 /* Werdd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werdd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D4072228F3BA89003CDE14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6D4072428F3BA89003CDE14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 			isa = PBXGroup;
 			children = (
 				C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */,
+				C6CDD04E29185E5F00F2DD15 /* DetailDefinitionView.swift */,
+				C6CDD05029185E6B00F2DD15 /* DetailSynonymsView.swift */,
+				C6CDD05229185E7600F2DD15 /* DetailAntonymsView.swift */,
+				C6CDD05429185E7E00F2DD15 /* DetailExampleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,8 +229,12 @@
 				C6CDD0472917328A00F2DD15 /* Entry.swift in Sources */,
 				C6CB0655291092AF00D8CB17 /* OrangeTableViewCell.swift in Sources */,
 				C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */,
+				C6CDD05529185E7E00F2DD15 /* DetailExampleView.swift in Sources */,
 				C6B8876929004B6B00BB6079 /* Dictionary.swift in Sources */,
+				C6CDD04F29185E5F00F2DD15 /* DetailDefinitionView.swift in Sources */,
 				C6CDD0442915F41400F2DD15 /* DetailViewController.swift in Sources */,
+				C6CDD05329185E7600F2DD15 /* DetailAntonymsView.swift in Sources */,
+				C6CDD05129185E6B00F2DD15 /* DetailSynonymsView.swift in Sources */,
 				C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */,
 				C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */,
 			);
