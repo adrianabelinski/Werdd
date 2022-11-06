@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Entry {
-  let wordTitle: String
-  let partsOfSpeech: String
-  let wordDefinition: String
-}
-
 struct Dictionary {
   static let allWords: [Entry] = [
     Entry(wordTitle: "Coding", partsOfSpeech: "verb", wordDefinition: "the process of assigning a code to something for classification or identification."),
