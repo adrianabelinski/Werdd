@@ -18,27 +18,21 @@ class DetailViewController: UIViewController {
     return view
   }()
   
-  let synonymView: UIView = {
-    let view = UIView()
+  let synonymView: DetailSynonymsView = {
+    let view = DetailSynonymsView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = UIColor(named: "Sage")
-    view.layer.cornerRadius = 20
     return view
   }()
   
-  let antonymView: UIView = {
-    let view = UIView()
+  let antonymView: DetailAntonymsView = {
+    let view = DetailAntonymsView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = UIColor(named: "Cherry")
-    view.layer.cornerRadius = 20
     return view
   }()
   
-  let exampleView: UIView = {
-    let view = UIView()
+  let exampleView: DetailExampleView = {
+    let view = DetailExampleView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = UIColor(named: "Pumpkin")
-    view.layer.cornerRadius = 20
     return view
   }()
   
@@ -102,7 +96,5 @@ class DetailViewController: UIViewController {
       exampleView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
-  
-
   
 }

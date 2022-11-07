@@ -39,6 +39,6 @@ class DetailDefintionView: UIView {
 
   func setUpView() {
     backgroundColor = UIColor(named: "Navy")
-    layer.cornerRadius = 20
+    layer.cornerRadius = 20 //This used to have view.layer.cor... etc on them, but this view is self referential.
   }
 }
