@@ -249,9 +249,9 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("\(alphabetizedWords[indexPath.row].wordTitle)")
-    
-    navigationController?.pushViewController(DetailViewController(), animated: true)
+    let detailViewController = DetailViewController()
+    detailViewController.entry = alphabetizedWords[indexPath.row]
+    navigationController?.pushViewController(detailViewController, animated: true)
 
   }
 }

@@ -12,6 +12,13 @@ class DetailViewController: UIViewController {
   
   // MARK: - Properties
   
+  var entry: Entry? {
+    didSet {
+      print("The DetailViwController has entry \(entry?.wordTitle)")
+    }
+  }
+  
+  
   let definitionView: DetailDefintionView = { //used to be UIView, but now it's our custom view
     let view = DetailDefintionView()
     view.translatesAutoresizingMaskIntoConstraints = false
