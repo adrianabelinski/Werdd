@@ -12,7 +12,15 @@ class DetailDefintionView: UIView {
   
   // MARK: - Properties
 
-  
+  let definitionLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Definition"
+   // label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+    label.textColor = .white
+    label.font = UIFont(name: "Rubik-Bold", size: 12)
+    return label
+  }()
   
   let padding: CGFloat = 20
   
@@ -35,10 +43,24 @@ class DetailDefintionView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpDefinitionLabel()
   }
 
   func setUpView() {
     backgroundColor = UIColor(named: "Navy")
     layer.cornerRadius = 20 //This used to have view.layer.cor... etc on them, but this view is self referential.
   }
+  
+  func setUpDefinitionLabel() {
+    addSubview(definitionLabel)
+    
+    NSLayoutConstraint.activate([
+      definitionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      definitionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+      definitionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
+  
+  
+  
 }

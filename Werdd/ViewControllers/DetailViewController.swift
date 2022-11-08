@@ -18,6 +18,13 @@ class DetailViewController: UIViewController {
     return view
   }()
   
+  let definitionLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont(name: "Rubik-Bold", size: 24)
+    return label
+  }()
+  
   let synonymView: DetailSynonymsView = {
     let view = DetailSynonymsView()
     view.translatesAutoresizingMaskIntoConstraints = false
