@@ -24,7 +24,7 @@ class DetailDefintionView: UIView {
   let defintionDescriptionLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Dummy text for important words."
+    label.text = "Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words."
     label.textColor = .black
     label.font = UIFont(name: "Rubik-Light", size: 20)
     label.lineBreakMode = .byWordWrapping
@@ -41,9 +41,6 @@ class DetailDefintionView: UIView {
     label.font = UIFont(name: "Rubik-Bold", size: 14)
     return label
   }()
-  
-  let padding: CGFloat = 20
-  
   
   // MARK: - Initializers
   
@@ -89,8 +86,8 @@ class DetailDefintionView: UIView {
     
     NSLayoutConstraint.activate([
       defintionDescriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-      defintionDescriptionLabel.topAnchor.constraint(equalTo: shortenedPartOfSpeechLabel.topAnchor, constant: 20),
-      defintionDescriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      defintionDescriptionLabel.topAnchor.constraint(equalTo: shortenedPartOfSpeechLabel.bottomAnchor, constant: 10),
+      defintionDescriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
     ])
   }
   
@@ -99,7 +96,7 @@ class DetailDefintionView: UIView {
     
     NSLayoutConstraint.activate([
       definitionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-      definitionLabel.topAnchor.constraint(equalTo: defintionDescriptionLabel.topAnchor, constant: 30),
+      definitionLabel.topAnchor.constraint(equalTo: defintionDescriptionLabel.bottomAnchor, constant: 20),
       definitionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
       definitionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
     ])
