@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
   
   var entry: Entry? {
     didSet {
-      print("The DetailViwController has entry \(entry?.wordTitle)")
+      title = entry?.wordTitle
     }
   }
   
@@ -59,7 +59,6 @@ class DetailViewController: UIViewController {
   }
   
   func setUpNavigationTitle() {
-    title = "Dummi"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
   
