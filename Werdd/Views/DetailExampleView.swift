@@ -12,6 +12,18 @@ class DetailExampleView: UIView {
   
   // MARK: - Properties
 
+  
+  let detailExampleLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Dummy text for important words."
+    label.textColor = .black
+    label.font = UIFont(name: "Rubik-Light", size: 20)
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
+    return label
+  }()
+  
   let exampleUsageLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,12 +54,23 @@ class DetailExampleView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpDetailExampleLabel()
     setUpExampleUsageLabel()
   }
 
   func setUpView() {
     backgroundColor = UIColor(named: "Pumpkin")
     layer.cornerRadius = 20
+  }
+  
+  func setUpDetailExampleLabel() {
+    addSubview(detailExampleLabel)
+    
+    NSLayoutConstraint.activate([
+      detailExampleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      detailExampleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+      detailExampleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
   }
   
   func setUpExampleUsageLabel() {

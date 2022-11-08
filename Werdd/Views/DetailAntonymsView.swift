@@ -11,6 +11,15 @@ class DetailAntonymsView: UIView {
   
   
   // MARK: - Properties
+  
+  let antonymsWordsLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Dummy"
+    label.textColor = .black
+    label.font = UIFont(name: "Rubik-Light", size: 14)
+    return label
+  }()
 
   let antonymsLabel: UILabel = {
     let label = UILabel()
@@ -42,12 +51,23 @@ class DetailAntonymsView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpAntonymsWordsLabel()
     setUpAntonymsLabel()
   }
 
   func setUpView() {
     backgroundColor = UIColor(named: "Cherry")
     layer.cornerRadius = 20
+  }
+  
+  func setUpAntonymsWordsLabel() {
+    addSubview(antonymsWordsLabel)
+    
+    NSLayoutConstraint.activate([
+      antonymsWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      antonymsWordsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+      antonymsWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
   }
   
   func setUpAntonymsLabel() {

@@ -12,6 +12,26 @@ class DetailDefintionView: UIView {
   
   // MARK: - Properties
 
+  let shortenedPartOfSpeechLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "dum."
+    label.textColor = .black
+    label.font = UIFont(name: "Rubik-Bold", size: 14)
+    return label
+  }()
+  
+  let defintionDescriptionLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Dummy text for important words."
+    label.textColor = .black
+    label.font = UIFont(name: "Rubik-Light", size: 20)
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
+    return label
+  }()
+  
   let definitionLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +63,8 @@ class DetailDefintionView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpShortenedPartOfSpeech()
+    setUpDefintionDescriptionLabel()
     setUpDefinitionLabel()
   }
 
@@ -50,12 +72,34 @@ class DetailDefintionView: UIView {
     backgroundColor = UIColor(named: "Navy")
     layer.cornerRadius = 20 //This used to have view.layer.cor... etc on them, but this view is self referential.
   }
+    
+  func setUpShortenedPartOfSpeech() {
+    addSubview(shortenedPartOfSpeechLabel)
+    
+    NSLayoutConstraint.activate([
+      shortenedPartOfSpeechLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      shortenedPartOfSpeechLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+      shortenedPartOfSpeechLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
+  
+  
+  func setUpDefintionDescriptionLabel() {
+    addSubview(defintionDescriptionLabel)
+    
+    NSLayoutConstraint.activate([
+      defintionDescriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      defintionDescriptionLabel.topAnchor.constraint(equalTo: shortenedPartOfSpeechLabel.topAnchor, constant: 20),
+      defintionDescriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
   
   func setUpDefinitionLabel() {
     addSubview(definitionLabel)
     
     NSLayoutConstraint.activate([
       definitionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      definitionLabel.topAnchor.constraint(equalTo: defintionDescriptionLabel.topAnchor, constant: 30),
       definitionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
       definitionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
     ])

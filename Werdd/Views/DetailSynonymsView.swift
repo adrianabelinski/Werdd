@@ -12,6 +12,15 @@ class DetailSynonymsView: UIView {
   
   // MARK: - Properties
 
+  let synonymWordsLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Dummy"
+    label.textColor = .black
+    label.font = UIFont(name: "Rubik-Light", size: 14)
+    return label
+  }()
+  
   let synonymLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +52,8 @@ class DetailSynonymsView: UIView {
   
   private func setUpUI() {
     setUpView()
-    setUpSynonymLabel()
+    setUpSynonymWordsLabel()
+    setUpSynonymDescriptionLabel()
   }
 
   func setUpView() {
@@ -51,8 +61,18 @@ class DetailSynonymsView: UIView {
     layer.cornerRadius = 20
   }
   
+  func setUpSynonymWordsLabel() {
+    addSubview(synonymWordsLabel)
+    
+    NSLayoutConstraint.activate([
+      synonymWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      synonymWordsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+      synonymWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
   
-  func setUpSynonymLabel() {
+  
+  func setUpSynonymDescriptionLabel() {
     addSubview(synonymLabel)
     
     NSLayoutConstraint.activate([
