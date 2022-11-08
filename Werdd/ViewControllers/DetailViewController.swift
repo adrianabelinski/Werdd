@@ -52,9 +52,15 @@ class DetailViewController: UIViewController {
     
     super.viewDidLoad()
     
+    setUpNavigationTitle()
     setUpUI()
 
     view.backgroundColor = UIColor(named: "Taupe")
+  }
+  
+  func setUpNavigationTitle() {
+    title = "Dummi"
+    navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   func setUpUI() {

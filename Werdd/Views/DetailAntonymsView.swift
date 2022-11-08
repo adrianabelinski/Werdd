@@ -12,7 +12,14 @@ class DetailAntonymsView: UIView {
   
   // MARK: - Properties
 
-  
+  let antonymsLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Antonyms"
+    label.textColor = .white
+    label.font = UIFont(name: "Rubik-Bold", size: 14)
+    return label
+  }()
   
   let padding: CGFloat = 20
   
@@ -35,10 +42,23 @@ class DetailAntonymsView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpAntonymsLabel()
   }
 
   func setUpView() {
     backgroundColor = UIColor(named: "Cherry")
     layer.cornerRadius = 20
   }
+  
+  func setUpAntonymsLabel() {
+    addSubview(antonymsLabel)
+    
+    NSLayoutConstraint.activate([
+      antonymsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      antonymsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+      antonymsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
+  
+  
 }

@@ -12,7 +12,15 @@ class DetailSynonymsView: UIView {
   
   // MARK: - Properties
 
-  
+  let synonymLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Synonyms"
+   // label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+    label.textColor = .white
+    label.font = UIFont(name: "Rubik-Bold", size: 14)
+    return label
+  }()
   
   let padding: CGFloat = 20
   
@@ -35,10 +43,24 @@ class DetailSynonymsView: UIView {
   
   private func setUpUI() {
     setUpView()
+    setUpSynonymLabel()
   }
 
   func setUpView() {
     backgroundColor = UIColor(named: "Sage")
     layer.cornerRadius = 20
   }
+  
+  
+  func setUpSynonymLabel() {
+    addSubview(synonymLabel)
+    
+    NSLayoutConstraint.activate([
+      synonymLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      synonymLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+      synonymLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+    ])
+  }
+  
+  
 }

@@ -15,11 +15,6 @@ class HomeViewController: UIViewController {
   
   let alphabetizedWords = Dictionary.allWords.sorted(by: {$0.wordTitle < $1.wordTitle})
   
-  func setUpNavigationTitle() {
-    title = "Werdd"
-    navigationController?.navigationBar.prefersLargeTitles = true
-  }
-  
   let containerView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +96,12 @@ class HomeViewController: UIViewController {
   
   
   // MARK: - UI Setup
+  
+  func setUpNavigationTitle() {
+    title = "Werdd"
+    navigationController?.navigationBar.prefersLargeTitles = true
+  }
+  
   
   func setUpUI() { // view is an aspect of UIView controller
     setUpContainerView()

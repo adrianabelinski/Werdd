@@ -18,7 +18,7 @@ class DetailDefintionView: UIView {
     label.text = "Definition"
    // label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     label.textColor = .white
-    label.font = UIFont(name: "Rubik-Bold", size: 12)
+    label.font = UIFont(name: "Rubik-Bold", size: 14)
     return label
   }()
   
