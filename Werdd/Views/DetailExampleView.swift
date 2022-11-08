@@ -16,7 +16,7 @@ class DetailExampleView: UIView {
   let detailExampleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Dummy text for important words."
+    label.text = "Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words."
     label.textColor = .black
     label.font = UIFont(name: "Rubik-Light", size: 20)
     label.lineBreakMode = .byWordWrapping
@@ -78,6 +78,7 @@ class DetailExampleView: UIView {
     
     NSLayoutConstraint.activate([
       exampleUsageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      exampleUsageLabel.topAnchor.constraint(equalTo: detailExampleLabel.bottomAnchor, constant: 20),
       exampleUsageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
       exampleUsageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
     ])

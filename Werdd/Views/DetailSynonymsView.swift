@@ -15,8 +15,10 @@ class DetailSynonymsView: UIView {
   let synonymWordsLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Dummy"
+    label.text = "Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy"
     label.textColor = .black
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
     label.font = UIFont(name: "Rubik-Light", size: 14)
     return label
   }()
@@ -77,8 +79,9 @@ class DetailSynonymsView: UIView {
     
     NSLayoutConstraint.activate([
       synonymLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+      synonymLabel.topAnchor.constraint(equalTo: synonymWordsLabel.bottomAnchor, constant: 20),
       synonymLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-      synonymLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      synonymLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
     ])
   }
   
