@@ -252,7 +252,7 @@ extension HomeViewController: UITableViewDelegate {
     let detailViewController = DetailViewController()
     detailViewController.entry = alphabetizedWords[indexPath.row]
     navigationController?.pushViewController(detailViewController, animated: true)
-
+ // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DetailViewController.swift, that's where I created the var entry to set the selected word to the title.
   }
 }
 
