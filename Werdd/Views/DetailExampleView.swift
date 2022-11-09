@@ -18,7 +18,7 @@ class DetailExampleView: UIView {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words. Dummy text for important words."
     label.textColor = .black
-    label.font = UIFont(name: "Rubik-Light", size: 20)
+    label.font = UIFont(name: "Rubik-Light", size: 7)
     label.lineBreakMode = .byWordWrapping
     label.numberOfLines = 0
     return label

@@ -14,10 +14,34 @@ class DetailViewController: UIViewController {
   
   var entry: Entry? {
     didSet {
-      title = entry?.wordTitle
+      guard let entry = entry else { return } //unwrapped entry so we wouldn't have to unwrap it all the time.
+      
+      title = entry.wordTitle
+      
+      let shortenedPartOfSpeechString: String
+      switch entry.partOfSpeech {
+      case .noun: shortenedPartOfSpeechString = "noun"
+      case .verb: shortenedPartOfSpeechString = "verb"
+      case .adjective: shortenedPartOfSpeechString = "adj."
+    }
+      definitionView.shortenedPartOfSpeechLabel.text = shortenedPartOfSpeechString
+
+      definitionView.defintionDescriptionLabel.text = entry.wordDefinition
+      synonymView.synonymWordsLabel.text = entry.synonyms.joined(separator: "\n\n")
+      antonymView.antonymsWordsLabel.text = entry.antonyms.joined(separator: "\n\n")
+      exampleView.detailExampleLabel.text = entry.examples.joined(separator: "\n\n")
     }
   }
-  
+//
+//  let partOfSpeechString: String
+//  switch word.partOfSpeech {
+//  case .noun: partOfSpeechString = "noun"
+//  case .verb: partOfSpeechString = "verb"
+//  case .adjective: partOfSpeechString = "adj."
+//  }
+//
+//  partOfSpeechLabel.text = partOfSpeechString
+//
   
   let definitionView: DetailDefintionView = { //used to be UIView, but now it's our custom view
     let view = DetailDefintionView()
