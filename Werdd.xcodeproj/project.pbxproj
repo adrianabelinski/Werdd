@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C618FC41291B4CF600EB2474 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618FC40291B4CF600EB2474 /* APIConstants.swift */; };
 		C6B886DA28F8ED6E00BB6079 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C67636FA28F8E71F00D8282E /* Rubik-Bold.ttf */; };
 		C6B886DC28F8ED9A00BB6079 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */; };
 		C6B8870128FC516F00BB6079 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C618FC40291B4CF600EB2474 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C67636FA28F8E71F00D8282E /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Bold.ttf"; path = "Rubik(2)/static/Rubik-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		C6B886DB28F8ED9700BB6079 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Regular.ttf"; path = "Rubik(2)/static/Rubik-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				C6D4072B28F3BA8B003CDE14 /* Assets.xcassets */,
 				C6D4072D28F3BA8B003CDE14 /* LaunchScreen.storyboard */,
 				C6D4073028F3BA8B003CDE14 /* Info.plist */,
+				C618FC40291B4CF600EB2474 /* APIConstants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				C6CDD04F29185E5F00F2DD15 /* DetailDefinitionView.swift in Sources */,
 				C6CDD0442915F41400F2DD15 /* DetailViewController.swift in Sources */,
 				C6CDD05329185E7600F2DD15 /* DetailAntonymsView.swift in Sources */,
+				C618FC41291B4CF600EB2474 /* APIConstants.swift in Sources */,
 				C6CDD05129185E6B00F2DD15 /* DetailSynonymsView.swift in Sources */,
 				C6D4072328F3BA89003CDE14 /* AppDelegate.swift in Sources */,
 				C6D4072528F3BA89003CDE14 /* SceneDelegate.swift in Sources */,
