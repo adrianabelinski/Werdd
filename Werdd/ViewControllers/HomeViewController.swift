@@ -9,9 +9,18 @@ import UIKit
 
 
 class HomeViewController: UIViewController {
-  // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
   
   // MARK: - Properties
+  
+  let collectionView: UICollectionView = {
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
+    
+    let collectionView = UICollectionView(frame: 0, collectionViewLayout: <#T##UICollectionViewLayout#>)
+    return collectionView
+  }()
   
   let alphabetizedWords = Dictionary.allWords.sorted(by: {$0.wordTitle < $1.wordTitle})
   
@@ -103,7 +112,7 @@ class HomeViewController: UIViewController {
   }
   
   
-  func setUpUI() { // view is an aspect of UIView controller
+  func setUpUI() {
     setUpContainerView()
     setUpWordTitle()
     setUpPartsOfSpeech()
@@ -192,8 +201,6 @@ class HomeViewController: UIViewController {
   
   func updateViews(withWord word: Entry) {
     wordTitleLabel.text = word.wordTitle
-    //partOfSpeechLabel.text = word.partOfSpeech
-    /*We're taking this partOfSpeechLabel and fixing it too. */
     
     let partOfSpeechString: String
     switch word.partOfSpeech {
@@ -214,22 +221,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // return 10
-    return alphabetizedWords.count //we tell table how many rows we want
+    return alphabetizedWords.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = OrangeTableViewCell() //creating cell objects because that's what ViewController wants returned above. Boring, white cell.
+    let cell = OrangeTableViewCell()
     
-   /* var content = cell.defaultContentConfiguration()
-    
-    content.text = alphabetizedWords[indexPath.row].wordTitle
-    content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
-
-    cell.contentConfiguration = content
-    */
-    
-    
-    cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle //we want wordLabel to be wordTitle from alphabetized words.
+    cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle
     
     let partOfSpeechString: String
     switch alphabetizedWords[indexPath.row].partOfSpeech {
@@ -237,7 +235,6 @@ extension HomeViewController: UITableViewDataSource {
     case .verb: partOfSpeechString = "verb"
     case .adjective: partOfSpeechString = "adjective"
     }
-    // the Entry model can have just 1 property that says what part of speech the entry is and it can be an enum. And with this enum, there's other benefits. You can't make a typo. Then view controllers can see the enum and then choose how to display part of speech.
     
     cell.partOfSpeechLabel.text = partOfSpeechString
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
@@ -252,7 +249,6 @@ extension HomeViewController: UITableViewDelegate {
     let detailViewController = DetailViewController()
     detailViewController.entry = alphabetizedWords[indexPath.row]
     navigationController?.pushViewController(detailViewController, animated: true)
- // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DetailViewController.swift, that's where I created the var entry to set the selected word to the title.
   }
 }
 

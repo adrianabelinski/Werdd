@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
   
   var entry: Entry? {
     didSet {
-      guard let entry = entry else { return } //unwrapped entry so we wouldn't have to unwrap it all the time.
+      guard let entry = entry else { return }
       
       title = entry.wordTitle
       
@@ -32,18 +32,8 @@ class DetailViewController: UIViewController {
       exampleView.detailExampleLabel.text = entry.examples.joined(separator: "\n\n")
     }
   }
-//
-//  let partOfSpeechString: String
-//  switch word.partOfSpeech {
-//  case .noun: partOfSpeechString = "noun"
-//  case .verb: partOfSpeechString = "verb"
-//  case .adjective: partOfSpeechString = "adj."
-//  }
-//
-//  partOfSpeechLabel.text = partOfSpeechString
-//
   
-  let definitionView: DetailDefintionView = { //used to be UIView, but now it's our custom view
+  let definitionView: DetailDefintionView = {
     let view = DetailDefintionView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
@@ -99,8 +89,6 @@ class DetailViewController: UIViewController {
       definitionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
       definitionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       definitionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-    //  definitionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
-    //  I was hardcoding the height here which was bad.
     ])
   }
   
@@ -110,7 +98,6 @@ class DetailViewController: UIViewController {
       synonymView.topAnchor.constraint(equalTo: definitionView.bottomAnchor, constant: 20),
       synonymView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       synonymView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-     // synonymView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
   
@@ -120,7 +107,6 @@ class DetailViewController: UIViewController {
       antonymView.topAnchor.constraint(equalTo: synonymView.bottomAnchor, constant: 20),
       antonymView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       antonymView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-   //   antonymView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
   
@@ -130,7 +116,6 @@ class DetailViewController: UIViewController {
       exampleView.topAnchor.constraint(equalTo: antonymView.bottomAnchor, constant: 20),
       exampleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       exampleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-   //   exampleView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
   
