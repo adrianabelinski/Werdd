@@ -12,16 +12,6 @@ class HomeViewController: UIViewController {
   
   // MARK: - Properties
   
-  let collectionView: UICollectionView = {
-    
-    let layout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .vertical
-    layout.itemSize = CGSize(width: view.frame.size.width/3.5, height: view.frame.size.width/3)
-    
-    let collectionView = UICollectionView(frame: 0, collectionViewLayout: <#T##UICollectionViewLayout#>)
-    return collectionView
-  }()
-  
   let alphabetizedWords = Dictionary.allWords.sorted(by: {$0.wordTitle < $1.wordTitle})
   
   let containerView: UIView = {

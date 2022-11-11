@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrangeTableViewCell: UITableViewCell {
+class OrangeCollectionViewCell: UICollectionViewCell {
   
   
   // MARK: - UI Properties
@@ -53,9 +53,9 @@ class OrangeTableViewCell: UITableViewCell {
 //  }()
   
   // MARK: - Initializers
-
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     setUpUI()
   }
