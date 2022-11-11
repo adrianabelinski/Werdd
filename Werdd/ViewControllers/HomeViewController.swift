@@ -64,12 +64,19 @@ class HomeViewController: UIViewController {
     return button
   }()
   
-  let dictionaryTableView: UITableView = {
-    let dictionaryTableView = UITableView()
-    dictionaryTableView.translatesAutoresizingMaskIntoConstraints = false
-    dictionaryTableView.layer.cornerRadius = 20
-    dictionaryTableView.separatorStyle = .none
-    return dictionaryTableView
+  lazy var dictionaryCollectionView: UICollectionView = {
+    //Layout
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.itemSize = CGSize(width: view.frame.size.width/2.3, height: view.frame.size.width/3)
+    layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+    //collectionView. They pass layout here.
+    let dictionaryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    dictionaryCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    dictionaryCollectionView.register(OrangeCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+    dictionaryCollectionView.layer.cornerRadius = 20
+    return dictionaryCollectionView
   }()
   
   
@@ -108,7 +115,7 @@ class HomeViewController: UIViewController {
     setUpPartsOfSpeech()
     setUpDefinition()
     setUpRandomButton()
-    setUpDictionaryTableView()
+    setUpDictionaryCollectionView()
   }
   
   func setUpContainerView() {
@@ -164,16 +171,16 @@ class HomeViewController: UIViewController {
     ])
   }
   
-  func setUpDictionaryTableView() {
-    view.addSubview(dictionaryTableView)
-    dictionaryTableView.dataSource = self
-    dictionaryTableView.delegate = self
+  func setUpDictionaryCollectionView() {
+    view.addSubview(dictionaryCollectionView)
+    dictionaryCollectionView.dataSource = self
+    dictionaryCollectionView.delegate = self
     
     NSLayoutConstraint.activate([
-      dictionaryTableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-      dictionaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      dictionaryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      dictionaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      dictionaryCollectionView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+      dictionaryCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      dictionaryCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      dictionaryCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
   }
   
@@ -208,14 +215,15 @@ class HomeViewController: UIViewController {
 
 
 
-extension HomeViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // return 10
+extension HomeViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return alphabetizedWords.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = OrangeTableViewCell()
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    let cell = OrangeCollectionViewCell()
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! OrangeCollectionViewCell
     
     cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle
     
@@ -234,8 +242,8 @@ extension HomeViewController: UITableViewDataSource {
   }
 }
 
-extension HomeViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension HomeViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let detailViewController = DetailViewController()
     detailViewController.entry = alphabetizedWords[indexPath.row]
     navigationController?.pushViewController(detailViewController, animated: true)

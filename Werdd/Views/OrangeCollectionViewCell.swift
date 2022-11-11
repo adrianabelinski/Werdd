@@ -89,7 +89,7 @@ class OrangeCollectionViewCell: UICollectionViewCell {
     
     NSLayoutConstraint.activate([
       wordLabel.topAnchor.constraint(equalTo: orangeContainerView.topAnchor, constant: 10),
-      wordLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 20),
+      wordLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 15),
     ])
   }
   
@@ -99,6 +99,7 @@ class OrangeCollectionViewCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       partOfSpeechLabel.topAnchor.constraint(equalTo: orangeContainerView.topAnchor, constant: 15),
       partOfSpeechLabel.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 5),
+      partOfSpeechLabel.trailingAnchor.constraint(lessThanOrEqualTo: orangeContainerView.trailingAnchor, constant: -5)
     ])
   }
   
@@ -107,11 +108,11 @@ class OrangeCollectionViewCell: UICollectionViewCell {
     
     NSLayoutConstraint.activate([
       definitionLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
-      definitionLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 20),
-      definitionLabel.bottomAnchor.constraint(equalTo: orangeContainerView.bottomAnchor, constant: -10),
-      definitionLabel.trailingAnchor.constraint(equalTo: orangeContainerView.trailingAnchor),
+      definitionLabel.leadingAnchor.constraint(equalTo: orangeContainerView.leadingAnchor, constant: 15),
+      definitionLabel.bottomAnchor.constraint(lessThanOrEqualTo: orangeContainerView.bottomAnchor, constant: -10),
+      definitionLabel.trailingAnchor.constraint(equalTo: orangeContainerView.trailingAnchor, constant: -15),
     ])
   }
   
-  
+  //lessThanOrEqualTo is a constaint less strict than the others.
 }
