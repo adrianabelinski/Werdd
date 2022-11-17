@@ -5,6 +5,8 @@
 //  Created by Adriana Belinski on 10/19/22.
 //
 
+//This could hang around for mock-dummy data.
+
 import Foundation
 
 struct Dictionary {

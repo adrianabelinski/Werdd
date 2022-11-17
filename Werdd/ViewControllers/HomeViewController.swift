@@ -73,6 +73,21 @@ class HomeViewController: UIViewController {
     return dictionaryTableView
   }()
   
+  lazy var searchController: UISearchController = {
+    let s = UISearchController(searchResultsController: nil)
+    s.searchResultsUpdater = self
+    
+    s.obscuresBackgroundDuringPresentation = false
+    s.searchBar.placeholder = "Find random word..."
+    s.searchBar.sizeToFit()
+    s.searchBar.searchBarStyle = .prominent
+    
+    s.searchBar.delegate = self
+    
+    return s
+  }()
+  
+  //add uitext field and a button instead of searchcontroler
   
   let padding: CGFloat = 20
   
@@ -81,20 +96,54 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    
     view.backgroundColor = UIColor(named: "Taupe")
     
     setUpNavigationTitle()
     setUpUI()
     
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back")
     
     if let word = alphabetizedWords.first {
       updateViews(withWord: word)
     }
+    
+    
+    // Could have written the filterContentForSearchText func.
+    
+    func isSearchBarEmpty() -> Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    search(word: "hi") //This call to function will be called automatically on viewDidLoad
   }
   
+  func search(word: String) {
+    guard let selectedWord = URL(string: "https://wordsapiv1.p.rapidapi.com/words/\(word)") else {
+      print("Invalid URL")
+      
+      return
+    }
+    
+    var urlRequest = URLRequest(url: selectedWord)
+    urlRequest.httpMethod = "GET"
+    urlRequest.setValue("application/json", forHTTPHeaderField: "Accept") //not required
+    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type") //not required
+    urlRequest.setValue(APIConstants.key, forHTTPHeaderField: "X-RapidAPI-Key")
+    urlRequest.setValue("wordsapiv1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
+
+    
+    URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+      guard let data = data, error == nil else { //make sure data is not an error
+        //could do error handling here.
+        return
+      }
+    }.resume()
+  }
   
+  //get data and decode it into a usable class/struct.
   // MARK: - UI Setup
   
   func setUpNavigationTitle() {
@@ -205,10 +254,49 @@ class HomeViewController: UIViewController {
     partOfSpeechLabel.text = partOfSpeechString
     
     wordDefinitionLabel.text = word.wordDefinition
+    
+  }
+}
+
+searchController.searchBar.text
+
+// User types in a fun word in the search bar which should be in the blank table view.
+// He presses enter
+// When search bar gets pressed, the words gets sent to the words api
+// The api searches for that word in the database, and sends back JSON for that word
+// Convert JSON into objects,
+// Our app shows all the definitions for that word
+// and show it in the detail screen
+//
+// Loading icon
+
+
+
+extension HomeViewController: UISearchBarDelegate {
+  
+  func searchBar(_ searchBar: UISearchBar) {
+    
   }
 }
 
 
+extension HomeViewController: UISearchResultsUpdating {
+  
+  func updateSearchResults(for searchController: UISearchController) {
+  //  <#code#>
+  }
+  
+}
+
+
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+struct Word: Codable {
+  let definition: String
+  let partOfSpeech: String
+  let synonyms: [String]
+  
+}
 
 
 extension HomeViewController: UITableViewDataSource {
