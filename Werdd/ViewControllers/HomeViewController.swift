@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class HomeViewController: UIViewController {
   // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
   
