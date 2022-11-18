@@ -7,15 +7,14 @@
 
 import UIKit
 
-
 class HomeViewController: UIViewController {
   // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
   
   // MARK: - Properties
   
-  let alphabetizedWords = Dictionary.allWords.sorted(by: {$0.wordTitle < $1.wordTitle})
+  let alphabetizedWords = WordDataSource.words.sorted(by: {$0.name < $1.name})
   
-  let containerView: UIView = {
+  let randomWordView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = UIColor(named: "Navy")
@@ -99,7 +98,7 @@ class HomeViewController: UIViewController {
     
     view.backgroundColor = UIColor(named: "Taupe")
     
-    setUpNavigationTitle()
+    setUpAppTitle()
     setUpUI()
     
     navigationItem.searchController = searchController
@@ -134,7 +133,7 @@ class HomeViewController: UIViewController {
     urlRequest.setValue(APIConstants.key, forHTTPHeaderField: "X-RapidAPI-Key")
     urlRequest.setValue("wordsapiv1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
 
-    
+
     URLSession.shared.dataTask(with: urlRequest) { data, response, error in
       guard let data = data, error == nil else { //make sure data is not an error
         //could do error handling here.
@@ -146,14 +145,14 @@ class HomeViewController: UIViewController {
   //get data and decode it into a usable class/struct.
   // MARK: - UI Setup
   
-  func setUpNavigationTitle() {
+  func setUpAppTitle() {
     title = "Werdd"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   
   func setUpUI() { // view is an aspect of UIView controller
-    setUpContainerView()
+    setUpRandomWordView()
     setUpWordTitle()
     setUpPartsOfSpeech()
     setUpDefinition()
@@ -161,54 +160,54 @@ class HomeViewController: UIViewController {
     setUpDictionaryTableView()
   }
   
-  func setUpContainerView() {
-    view.addSubview(containerView)
+  func setUpRandomWordView() {
+    view.addSubview(randomWordView)
     
     NSLayoutConstraint.activate([
-      containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-      containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-      containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
+      randomWordView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+      randomWordView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      randomWordView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+      randomWordView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
     ])
   }
   
   func setUpWordTitle() {
-    containerView.addSubview(wordTitleLabel)
+    randomWordView.addSubview(wordTitleLabel)
     
     NSLayoutConstraint.activate([
-      wordTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-      wordTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+      wordTitleLabel.topAnchor.constraint(equalTo: randomWordView.topAnchor, constant: 20),
+      wordTitleLabel.leadingAnchor.constraint(equalTo: randomWordView.leadingAnchor, constant: 20)
     ])
   }
   
   func setUpPartsOfSpeech() {
-    containerView.addSubview(partOfSpeechLabel)
+    randomWordView.addSubview(partOfSpeechLabel)
     
     NSLayoutConstraint.activate([
       partOfSpeechLabel.bottomAnchor.constraint(equalTo: wordTitleLabel.bottomAnchor, constant: -4),
       partOfSpeechLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.trailingAnchor, constant: 5),
-      partOfSpeechLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor)
+      partOfSpeechLabel.trailingAnchor.constraint(lessThanOrEqualTo: randomWordView.trailingAnchor)
     ])
   }
   
   func setUpDefinition() {
-    containerView.addSubview(wordDefinitionLabel)
+    randomWordView.addSubview(wordDefinitionLabel)
     
     NSLayoutConstraint.activate([
       wordDefinitionLabel.topAnchor.constraint(equalTo: partOfSpeechLabel.bottomAnchor, constant: 20),
       wordDefinitionLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.leadingAnchor),
-      wordDefinitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+      wordDefinitionLabel.trailingAnchor.constraint(equalTo: randomWordView.trailingAnchor, constant: -20)
     ])
   }
   
   func setUpRandomButton() {
-    containerView.addSubview(randomButton)
+    randomWordView.addSubview(randomButton)
     
     randomButton.addTarget(self, action: #selector(randomButtonPressed), for: .touchUpInside)
     
     NSLayoutConstraint.activate([
-      randomButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
-      randomButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+      randomButton.bottomAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: -padding),
+      randomButton.trailingAnchor.constraint(equalTo: randomWordView.trailingAnchor, constant: -padding),
       randomButton.heightAnchor.constraint(equalToConstant: 50),
       randomButton.widthAnchor.constraint(equalToConstant: 50),
     ])
@@ -220,7 +219,7 @@ class HomeViewController: UIViewController {
     dictionaryTableView.delegate = self
     
     NSLayoutConstraint.activate([
-      dictionaryTableView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+      dictionaryTableView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 20),
       dictionaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       dictionaryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       dictionaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -235,12 +234,12 @@ class HomeViewController: UIViewController {
   
   }
   
-  func randomizedWord() -> Entry? {
+  func randomizedWord() -> Word? {
     return alphabetizedWords.randomElement()
   }
   
-  func updateViews(withWord word: Entry) {
-    wordTitleLabel.text = word.wordTitle
+  func updateViews(withWord word: Word) {
+    wordTitleLabel.text = word.name
     //partOfSpeechLabel.text = word.partOfSpeech
     /*We're taking this partOfSpeechLabel and fixing it too. */
     
@@ -258,7 +257,7 @@ class HomeViewController: UIViewController {
   }
 }
 
-searchController.searchBar.text
+//searchController.searchBar.text
 
 // User types in a fun word in the search bar which should be in the blank table view.
 // He presses enter
@@ -289,16 +288,6 @@ extension HomeViewController: UISearchResultsUpdating {
 }
 
 
-
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-struct Word: Codable {
-  let definition: String
-  let partOfSpeech: String
-  let synonyms: [String]
-  
-}
-
-
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // return 10
@@ -317,7 +306,7 @@ extension HomeViewController: UITableViewDataSource {
     */
     
     
-    cell.wordLabel.text = alphabetizedWords[indexPath.row].wordTitle //we want wordLabel to be wordTitle from alphabetized words.
+    cell.wordLabel.text = alphabetizedWords[indexPath.row].name //we want wordLabel to be wordTitle from alphabetized words.
     
     let partOfSpeechString: String
     switch alphabetizedWords[indexPath.row].partOfSpeech {
@@ -325,7 +314,7 @@ extension HomeViewController: UITableViewDataSource {
     case .verb: partOfSpeechString = "verb"
     case .adjective: partOfSpeechString = "adjective"
     }
-    // the Entry model can have just 1 property that says what part of speech the entry is and it can be an enum. And with this enum, there's other benefits. You can't make a typo. Then view controllers can see the enum and then choose how to display part of speech.
+    // the Word model can have just 1 property that says what part of speech the entry is and it can be an enum. And with this enum, there's other benefits. You can't make a typo. Then view controllers can see the enum and then choose how to display part of speech.
     
     cell.partOfSpeechLabel.text = partOfSpeechString
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
@@ -337,10 +326,10 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let detailViewController = DetailViewController()
+    let detailViewController = DefinitionDetailsViewController()
     detailViewController.entry = alphabetizedWords[indexPath.row]
     navigationController?.pushViewController(detailViewController, animated: true)
- // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DetailViewController.swift, that's where I created the var entry to set the selected word to the title.
+ // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DefinitionDetailsViewController.swift, that's where I created the var entry to set the selected word to the title.
   }
 }
 

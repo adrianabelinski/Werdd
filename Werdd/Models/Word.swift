@@ -1,5 +1,5 @@
 //
-//  Entry.swift
+//  Word.swift
 //  Werdd
 //
 //  Created by Adriana Belinski on 11/5/22.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Entry {
+struct Word {
   enum PartOfSpeech {
     case noun
     case adjective
     case verb
   }
   
-  let wordTitle: String
+  let name: String
   let partOfSpeech: PartOfSpeech
   let wordDefinition: String
   let synonyms: [String]

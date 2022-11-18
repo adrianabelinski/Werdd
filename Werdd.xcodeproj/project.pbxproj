@@ -13,10 +13,10 @@
 		C6B8870128FC516F00BB6079 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */; };
 		C6B8870328FC517D00BB6079 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870228FC517D00BB6079 /* Rubik-Light.ttf */; };
 		C6B8870528FC519300BB6079 /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8870428FC519300BB6079 /* Rubik-SemiBold.ttf */; };
-		C6B8876929004B6B00BB6079 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B8876829004B6B00BB6079 /* Dictionary.swift */; };
+		C6B8876929004B6B00BB6079 /* WordDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B8876829004B6B00BB6079 /* WordDataSource.swift */; };
 		C6CB0655291092AF00D8CB17 /* OrangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */; };
-		C6CDD0442915F41400F2DD15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0432915F41400F2DD15 /* DetailViewController.swift */; };
-		C6CDD0472917328A00F2DD15 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0462917328A00F2DD15 /* Entry.swift */; };
+		C6CDD0442915F41400F2DD15 /* DefinitionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0432915F41400F2DD15 /* DefinitionDetailsViewController.swift */; };
+		C6CDD0472917328A00F2DD15 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD0462917328A00F2DD15 /* Word.swift */; };
 		C6CDD04F29185E5F00F2DD15 /* DetailDefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD04E29185E5F00F2DD15 /* DetailDefinitionView.swift */; };
 		C6CDD05129185E6B00F2DD15 /* DetailSynonymsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD05029185E6B00F2DD15 /* DetailSynonymsView.swift */; };
 		C6CDD05329185E7600F2DD15 /* DetailAntonymsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDD05229185E7600F2DD15 /* DetailAntonymsView.swift */; };
@@ -35,10 +35,10 @@
 		C6B8870028FC516F00BB6079 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		C6B8870228FC517D00BB6079 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
 		C6B8870428FC519300BB6079 /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
-		C6B8876829004B6B00BB6079 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		C6B8876829004B6B00BB6079 /* WordDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDataSource.swift; sourceTree = "<group>"; };
 		C6CB0654291092AF00D8CB17 /* OrangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeTableViewCell.swift; sourceTree = "<group>"; };
-		C6CDD0432915F41400F2DD15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		C6CDD0462917328A00F2DD15 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		C6CDD0432915F41400F2DD15 /* DefinitionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionDetailsViewController.swift; sourceTree = "<group>"; };
+		C6CDD0462917328A00F2DD15 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		C6CDD04E29185E5F00F2DD15 /* DetailDefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDefinitionView.swift; sourceTree = "<group>"; };
 		C6CDD05029185E6B00F2DD15 /* DetailSynonymsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSynonymsView.swift; sourceTree = "<group>"; };
 		C6CDD05229185E7600F2DD15 /* DetailAntonymsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAntonymsView.swift; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 		C6CDD04A2917330900F2DD15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C6CDD0462917328A00F2DD15 /* Entry.swift */,
-				C6B8876829004B6B00BB6079 /* Dictionary.swift */,
+				C6CDD0462917328A00F2DD15 /* Word.swift */,
+				C6B8876829004B6B00BB6079 /* WordDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D4072628F3BA89003CDE14 /* HomeViewController.swift */,
-				C6CDD0432915F41400F2DD15 /* DetailViewController.swift */,
+				C6CDD0432915F41400F2DD15 /* DefinitionDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -229,13 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6CDD0472917328A00F2DD15 /* Entry.swift in Sources */,
+				C6CDD0472917328A00F2DD15 /* Word.swift in Sources */,
 				C6CB0655291092AF00D8CB17 /* OrangeTableViewCell.swift in Sources */,
 				C6D4072728F3BA89003CDE14 /* HomeViewController.swift in Sources */,
 				C6CDD05529185E7E00F2DD15 /* DetailExampleView.swift in Sources */,
-				C6B8876929004B6B00BB6079 /* Dictionary.swift in Sources */,
+				C6B8876929004B6B00BB6079 /* WordDataSource.swift in Sources */,
 				C6CDD04F29185E5F00F2DD15 /* DetailDefinitionView.swift in Sources */,
-				C6CDD0442915F41400F2DD15 /* DetailViewController.swift in Sources */,
+				C6CDD0442915F41400F2DD15 /* DefinitionDetailsViewController.swift in Sources */,
 				C6CDD05329185E7600F2DD15 /* DetailAntonymsView.swift in Sources */,
 				C618FC41291B4CF600EB2474 /* APIConstants.swift in Sources */,
 				C6CDD05129185E6B00F2DD15 /* DetailSynonymsView.swift in Sources */,

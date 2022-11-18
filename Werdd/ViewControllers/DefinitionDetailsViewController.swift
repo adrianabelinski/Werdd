@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController {
+class DefinitionDetailsViewController: UIViewController {
   
   // MARK: - Properties
   
-  var entry: Entry? {
+  var entry: Word? {
     didSet {
       guard let entry = entry else { return } //unwrapped entry so we wouldn't have to unwrap it all the time.
       
-      title = entry.wordTitle
+      title = entry.name
       
       let shortenedPartOfSpeechString: String
       switch entry.partOfSpeech {
@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
       definitionView.defintionDescriptionLabel.text = entry.wordDefinition
       synonymView.synonymWordsLabel.text = entry.synonyms.joined(separator: "\n\n")
       antonymView.antonymsWordsLabel.text = entry.antonyms.joined(separator: "\n\n")
-      exampleView.detailExampleLabel.text = entry.examples.joined(separator: "\n\n")
+      examplesView.detailExampleLabel.text = entry.examples.joined(separator: "\n\n")
     }
   }
 //
@@ -42,6 +42,12 @@ class DetailViewController: UIViewController {
 //
 //  partOfSpeechLabel.text = partOfSpeechString
 //
+  
+  let scrollView: UIScrollView = {
+      let scrollView = UIScrollView()
+      scrollView.translatesAutoresizingMaskIntoConstraints = false
+      return scrollView
+  }()
   
   let definitionView: DetailDefintionView = { //used to be UIView, but now it's our custom view
     let view = DetailDefintionView()
@@ -63,7 +69,7 @@ class DetailViewController: UIViewController {
     return view
   }()
   
-  let exampleView: DetailExampleView = {
+  let examplesView: DetailExampleView = {
     let view = DetailExampleView()
     view.translatesAutoresizingMaskIntoConstraints = false
   //  view.isHidden = true
@@ -73,13 +79,12 @@ class DetailViewController: UIViewController {
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
-    
     super.viewDidLoad()
     
-    setUpNavigationTitle()
-    setUpUI()
-
     view.backgroundColor = UIColor(named: "Taupe")
+    
+    setUpUI()
+    setUpNavigationTitle()
   }
   
   func setUpNavigationTitle() {
@@ -87,10 +92,22 @@ class DetailViewController: UIViewController {
   }
   
   func setUpUI() {
+    addScrollView()
     setUpDefintionView()
     setUpSynonymView()
     setUpAntonymView()
     setUpExampleView()
+  }
+  
+  func addScrollView() {
+      view.addSubview(scrollView)
+      
+      NSLayoutConstraint.activate([
+          scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+          scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+          scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+          scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      ])
   }
   
   func setUpDefintionView() {
@@ -125,12 +142,12 @@ class DetailViewController: UIViewController {
   }
   
   func setUpExampleView() {
-    view.addSubview(exampleView)
+    view.addSubview(examplesView)
     NSLayoutConstraint.activate([
-      exampleView.topAnchor.constraint(equalTo: antonymView.bottomAnchor, constant: 20),
-      exampleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      exampleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-   //   exampleView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
+      examplesView.topAnchor.constraint(equalTo: antonymView.bottomAnchor, constant: 20),
+      examplesView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      examplesView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+   //   examplesView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
     ])
   }
   
