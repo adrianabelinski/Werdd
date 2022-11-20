@@ -13,7 +13,9 @@ class HomeViewController: BaseViewController {
   
   // MARK: - Properties
   
-  let alphabetizedWords = WordDataSource.words.sorted(by: {$0.name < $1.name})
+//  let alphabetizedWords = WordDataSource.words.sorted(by: {$0.name < $1.name})
+  
+  var wordDetails: [WordDetail]?
   
   let randomWordView: UIView = {
     let view = UIView()
@@ -96,9 +98,9 @@ class HomeViewController: BaseViewController {
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back")
     
-    if let word = alphabetizedWords.first {
-      updateViews(withWord: word)
-    }
+//    if let word = alphabetizedWords.first {
+//      updateViews(withWord: word)
+//    }
   }
   
   //get data and decode it into a usable class/struct.
@@ -205,7 +207,8 @@ class HomeViewController: BaseViewController {
   }
   
   func randomizedWord() -> Word? {
-    return alphabetizedWords.randomElement()
+    return nil
+//    return alphabetizedWords.randomElement()
   }
   
   func updateViews(withWord word: Word) {
@@ -242,32 +245,19 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // return 10
-    return alphabetizedWords.count //we tell table how many rows we want
+    return words?.count ?? 0 //we tell table how many rows we want
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = OrangeTableViewCell() //creating cell objects because that's what ViewController wants returned above. Boring, white cell.
     
-    /* var content = cell.defaultContentConfiguration()
-     
-     content.text = alphabetizedWords[indexPath.row].wordTitle
-     content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
-     
-     cell.contentConfiguration = content
-     */
-    
-    
-    cell.wordLabel.text = alphabetizedWords[indexPath.row].name //we want wordLabel to be wordTitle from alphabetized words.
-    
-    let partOfSpeechString: String
-    switch alphabetizedWords[indexPath.row].partOfSpeech {
-    case .noun: partOfSpeechString = "noun"
-    case .verb: partOfSpeechString = "verb"
-    case .adjective: partOfSpeechString = "adjective"
+    guard let words = words else {
+      return cell
     }
-    // the Word model can have just 1 property that says what part of speech the entry is and it can be an enum. And with this enum, there's other benefits. You can't make a typo. Then view controllers can see the enum and then choose how to display part of speech.
     
-    cell.partOfSpeechLabel.text = partOfSpeechString
+    cell.wordLabel.text = words[indexPath.row].name //we want wordLabel to be wordTitle from alphabetized words.
+    
+    cell.partOfSpeechLabel.text = words[indexPath.row].partOfSpeech
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
     
     
