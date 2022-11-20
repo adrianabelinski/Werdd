@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
+  // It used to be "class HomeViewController: UIViewController" but because BaseViewController subclasses from UIViewController, we didn't have to keep it in there anymore anyway.
   // UIViewController class part of uikit framework. Anything that beguns with ui is part of uikit
   
   // MARK: - Properties
@@ -64,32 +65,24 @@ class HomeViewController: UIViewController {
     return button
   }()
   
+  lazy var searchView: SearchView = {
+    let searchView = SearchView(searchDefinitionsDelegate: self)
+    searchView.translatesAutoresizingMaskIntoConstraints = false
+    searchView.layer.cornerRadius = 20
+    
+    // Top right corner, Top left corner
+    searchView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    return searchView
+  }()
+  
   let dictionaryTableView: UITableView = {
     let dictionaryTableView = UITableView()
     dictionaryTableView.translatesAutoresizingMaskIntoConstraints = false
-    dictionaryTableView.layer.cornerRadius = 20
     dictionaryTableView.separatorStyle = .none
     return dictionaryTableView
   }()
   
-  lazy var searchController: UISearchController = {
-    let s = UISearchController(searchResultsController: nil)
-    s.searchResultsUpdater = self
-    
-    s.obscuresBackgroundDuringPresentation = false
-    s.searchBar.placeholder = "Find random word..."
-    s.searchBar.sizeToFit()
-    s.searchBar.searchBarStyle = .prominent
-    
-    s.searchBar.delegate = self
-    
-    return s
-  }()
-  
-  //add uitext field and a button instead of searchcontroler
-  
   let padding: CGFloat = 20
-  
   
   // MARK: - Lifecycle
   
@@ -101,45 +94,11 @@ class HomeViewController: UIViewController {
     setUpAppTitle()
     setUpUI()
     
-    navigationItem.searchController = searchController
-    navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back")
     
     if let word = alphabetizedWords.first {
       updateViews(withWord: word)
     }
-    
-    
-    // Could have written the filterContentForSearchText func.
-    
-    func isSearchBarEmpty() -> Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    search(word: "hi") //This call to function will be called automatically on viewDidLoad
-  }
-  
-  func search(word: String) {
-    guard let selectedWord = URL(string: "https://wordsapiv1.p.rapidapi.com/words/\(word)") else {
-      print("Invalid URL")
-      
-      return
-    }
-    
-    var urlRequest = URLRequest(url: selectedWord)
-    urlRequest.httpMethod = "GET"
-    urlRequest.setValue("application/json", forHTTPHeaderField: "Accept") //not required
-    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type") //not required
-    urlRequest.setValue(APIConstants.key, forHTTPHeaderField: "X-RapidAPI-Key")
-    urlRequest.setValue("wordsapiv1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
-
-
-    URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-      guard let data = data, error == nil else { //make sure data is not an error
-        //could do error handling here.
-        return
-      }
-    }.resume()
   }
   
   //get data and decode it into a usable class/struct.
@@ -157,6 +116,7 @@ class HomeViewController: UIViewController {
     setUpPartsOfSpeech()
     setUpDefinition()
     setUpRandomButton()
+    setUpSearchView()
     setUpDictionaryTableView()
   }
   
@@ -213,13 +173,23 @@ class HomeViewController: UIViewController {
     ])
   }
   
+  func setUpSearchView() {
+    view.addSubview(searchView)
+    
+    NSLayoutConstraint.activate([
+      searchView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 35),
+      searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    ])
+  }
+  
   func setUpDictionaryTableView() {
     view.addSubview(dictionaryTableView)
     dictionaryTableView.dataSource = self
     dictionaryTableView.delegate = self
     
     NSLayoutConstraint.activate([
-      dictionaryTableView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 20),
+      dictionaryTableView.topAnchor.constraint(equalTo: searchView.bottomAnchor),
       dictionaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       dictionaryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       dictionaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -231,7 +201,7 @@ class HomeViewController: UIViewController {
     if let randomWord = randomizedWord() {
       updateViews(withWord: randomWord)
     }
-  
+    
   }
   
   func randomizedWord() -> Word? {
@@ -269,25 +239,6 @@ class HomeViewController: UIViewController {
 //
 // Loading icon
 
-
-
-extension HomeViewController: UISearchBarDelegate {
-  
-  func searchBar(_ searchBar: UISearchBar) {
-    
-  }
-}
-
-
-extension HomeViewController: UISearchResultsUpdating {
-  
-  func updateSearchResults(for searchController: UISearchController) {
-  //  <#code#>
-  }
-  
-}
-
-
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // return 10
@@ -297,13 +248,13 @@ extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = OrangeTableViewCell() //creating cell objects because that's what ViewController wants returned above. Boring, white cell.
     
-   /* var content = cell.defaultContentConfiguration()
-    
-    content.text = alphabetizedWords[indexPath.row].wordTitle
-    content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
-
-    cell.contentConfiguration = content
-    */
+    /* var content = cell.defaultContentConfiguration()
+     
+     content.text = alphabetizedWords[indexPath.row].wordTitle
+     content.secondaryText = alphabetizedWords[indexPath.row].wordDefinition
+     
+     cell.contentConfiguration = content
+     */
     
     
     cell.wordLabel.text = alphabetizedWords[indexPath.row].name //we want wordLabel to be wordTitle from alphabetized words.
@@ -319,7 +270,7 @@ extension HomeViewController: UITableViewDataSource {
     cell.partOfSpeechLabel.text = partOfSpeechString
     cell.definitionLabel.text = alphabetizedWords[indexPath.row].wordDefinition
     
-
+    
     return cell
   }
 }
@@ -329,7 +280,14 @@ extension HomeViewController: UITableViewDelegate {
     let detailViewController = DefinitionDetailsViewController()
     detailViewController.entry = alphabetizedWords[indexPath.row]
     navigationController?.pushViewController(detailViewController, animated: true)
- // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DefinitionDetailsViewController.swift, that's where I created the var entry to set the selected word to the title.
+    // Here in the delegate, we see the table view and didSelectRowAt, we created a let for detialViewController, and we called the entry to be a specific selected row. Then we push the view controller which is detailViewContoller here. Back in DefinitionDetailsViewController.swift, that's where I created the var entry to set the selected word to the title.
   }
 }
 
+// MARK: - SearchDefinitionDelegate Methods
+
+extension HomeViewController: SearchDefinitionsDelegate {
+  func searchDefinitions(forWord word: String?) {
+    print("HomeViewController sees that user searched for \(word)")
+  }
+}
