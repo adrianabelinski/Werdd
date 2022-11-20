@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+final class HomeViewController: BaseViewController {
     
     // MARK: - Properties
     
@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     }()
 
     lazy var randomWordView: RoundedViewWithColor = {
-        let view = RoundedViewWithColor { [weak self] in
+        let view = RoundedViewWithColor(color: UIColor(named: "WerddBlue")) { [weak self] in
             self?.refreshRandomWordLabels()
         }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,19 @@ class HomeViewController: UIViewController {
         return collectionView
     }()
     
-    let words = WordDataSource().words
+    lazy var searchView: SearchView = {
+        let searchView = SearchView(searchDefinitionsDelegate: self)
+//      let searchView = SearchView(homeViewController: self)
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        searchView.layer.cornerRadius = 20
+
+        // Top right corner, Top left corner
+        searchView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        return searchView
+    }()
+    
+    var words: [WordDetail]?
+    var selectedWord: String?
     
     // MARK: - Lifecycle
     
@@ -50,44 +62,33 @@ class HomeViewController: UIViewController {
         
         view.backgroundColor = UIColor(named: "Taupe")
         
-        setUpUI()
+        addSubviews()
         refreshRandomWordLabels()
     }
     
     // MARK: - UI Setup
     
-    func setUpUI() {
-        setUpAppTitleLabel()
-        setUpRandomWordView()
-        setUpCollectionView()
-    }
-    
-    func setUpAppTitleLabel() {
+    private func addSubviews() {
         view.addSubview(appTitleLabel)
-        
-        NSLayoutConstraint.activate([
-            appTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            appTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            appTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
-        ])
-    }
-    
-    func setUpRandomWordView() {
         view.addSubview(randomWordView)
-        
-        NSLayoutConstraint.activate([
-            randomWordView.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 30),
-            randomWordView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            randomWordView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            randomWordView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
-        ])
-    }
-    
-    func setUpCollectionView() {
+        view.addSubview(searchView)
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 35),
+            appTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            appTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            appTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            
+            randomWordView.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 30),
+            randomWordView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            randomWordView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            randomWordView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.20),
+            
+            searchView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 35),
+            searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -96,19 +97,18 @@ class HomeViewController: UIViewController {
     
     // MARK: - Actions
     
-    func refreshRandomWordLabels() {
-        let randomWord = words.randomElement()
-        randomWordView.wordTitleLabel.text = randomWord?.name
-        randomWordView.partsOfSpeechLabel.text = randomWord?.partOfSpeech
-        randomWordView.wordDefinitionLabel.text = randomWord?.definition
+    private func refreshRandomWordLabels() {
+        addSpinner()
+        
+        // Some networking code goes here...
     }
 }
 
-// MARK: - UICollectionViewDataSource Methods
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegate Methods
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words.count
+        return words?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -117,15 +117,28 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
                     
-        cell.configure(with: words[indexPath.row])
+        cell.updateViews(words?[indexPath.row], word: selectedWord)
         return cell
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedWord = words[indexPath.row]
+        guard let selectedWord = selectedWord,
+              let selectedWordDetails = words?[indexPath.row] else {
+            assertionFailure("Selected word unexpectedly found nil")
+            return
+        }
         
-        navigationController?.pushViewController(DefinitionDetailsViewController(wordDetail: selectedWord, selectedWord: selectedWord.name), animated: true)
+        navigationController?.pushViewController(DefinitionDetailsViewController(wordDetail: selectedWordDetails, selectedWord: selectedWord), animated: true)
+    }
+}
+
+// MARK: - SearchDefinitionDelegate Methods
+
+extension HomeViewController: SearchDefinitionsDelegate {
+//extension HomeViewController {
+    func searchDefinitions(forWord word: String?) {
+        // Networking code goes here, also validation for missing word
     }
 }

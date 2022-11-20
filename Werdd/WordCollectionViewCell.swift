@@ -11,7 +11,7 @@ final class WordCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Class Properties
     
-    static let identifier = "WordCollectionViewCell"
+    static let identifier = WordCollectionViewCell.self.description()
     
     // MARK: - UI Properties
     
@@ -27,7 +27,7 @@ final class WordCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont(name: "Rubik-Bold", size: 18) 
+        label.font = UIFont(name: "Rubik-Bold", size: 18)
         return label
     }()
     
@@ -57,12 +57,18 @@ final class WordCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        nil
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - UI Setup
     
     private func setUpViews() {
+        titleLabel.text = "title"
+        partsOfSpeechLabel.text = "parts of speech"
+        subtitleLabel.text = "subtitle"
+        
+        contentView.backgroundColor = .white
+        
         containerView.addSubview(titleLabel)
         containerView.addSubview(partsOfSpeechLabel)
         containerView.addSubview(subtitleLabel)
@@ -92,9 +98,9 @@ final class WordCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with word: Word) {
-        titleLabel.text = word.name
-        subtitleLabel.text = word.definition
-        partsOfSpeechLabel.text = word.partOfSpeech
+    func updateViews(_ wordDetail: WordDetail?, word: String?) {
+        titleLabel.text = word
+        subtitleLabel.text = wordDetail?.definition
+        partsOfSpeechLabel.text = wordDetail?.partOfSpeech
     }
 }
