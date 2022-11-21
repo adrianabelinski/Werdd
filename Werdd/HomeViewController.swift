@@ -167,6 +167,45 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: SearchDefinitionsDelegate {
 //extension HomeViewController {
     func searchDefinitions(forWord word: String?) {
-        // Networking code goes here, also validation for missing word
+        
+        guard let word = word, !word.isEmpty else {
+            presentMissingWordAlert()
+            return
+        }
+        
+        addSpinner()
+        
+        networkManager.fetchWordWithDetails(word) { [weak self] result in
+            switch result {
+            case .success(let word):
+                DispatchQueue.main.async {
+                    let resultsThatIncludeADefinition = word.results?.filter { $0.definition != nil }
+                    self?.words = resultsThatIncludeADefinition
+                    self?.selectedWord = word.word
+                    self?.collectionView.reloadData()
+                    self?.removeSpinner()
+                }
+            case .failure(let error):
+                print("Failed to decode RandomWord with error: \(error.localizedDescription)")
+                self?.removeSpinner()
+            }
+        }
+    }
+    
+    // MARK: - Alerts
+    
+    private func presentMissingWordAlert() {
+        let alertController = UIAlertController(
+            title: "",
+            message: "Please enter a word in the text field first to retrieve definitions",
+            preferredStyle: .alert
+        )
+        alertController.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .cancel,
+                handler: nil)
+        )
+        present(alertController, animated: true, completion: nil)
     }
 }
