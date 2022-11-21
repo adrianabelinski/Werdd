@@ -52,8 +52,21 @@ final class HomeViewController: BaseViewController {
         return searchView
     }()
     
+    private let networkManager: NetworkManager //This is a var that holds instance of network manager
     var words: [WordDetail]?
     var selectedWord: String?
+    
+    // MARK: - Initializer
+    
+    init(networkManager: NetworkManager = NetworkManager()) { //= networkmanager() means we're providing a default value for the networkManager parameter if the code calling the initializer doesn't provide a value.
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil) //Creating initializer here and calling superclass's initializer so super class can do it's own thing. Nibname stuff just means you're not using storyboard.
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    } //IGNORE 66-68 VOODOO
+    
     
     // MARK: - Lifecycle
     
@@ -100,7 +113,22 @@ final class HomeViewController: BaseViewController {
     private func refreshRandomWordLabels() {
         addSpinner()
         
-        // Some networking code goes here...
+        networkManager.fetchRandomWord { [weak self] result in
+            switch result {
+            case .success(let randomWord):
+                DispatchQueue.main.async {
+                    self?.randomWordView.wordTitleLabel.text = randomWord.word
+                    self?.randomWordView.partsOfSpeechLabel.text = randomWord.results?.first?.partOfSpeech
+                    self?.randomWordView.wordDefinitionLabel.text = randomWord.results?.first?.definition
+                    self?.removeSpinner()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.removeSpinner()
+                }
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
