@@ -25,6 +25,8 @@
 		C68EB339292AE0A10020F5EA /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB338292AE0A10020F5EA /* APIConstants.swift */; };
 		C68EB33B292AE1230020F5EA /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB33A292AE1230020F5EA /* CommonError.swift */; };
 		C68EB343292C1E630020F5EA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB342292C1E630020F5EA /* NetworkManager.swift */; };
+		C68EB345292C3B160020F5EA /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB344292C3B160020F5EA /* FavoritesViewController.swift */; };
+		C68EB347292C3C140020F5EA /* FavoritesPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB346292C3C140020F5EA /* FavoritesPageButton.swift */; };
 		F32319C0280BA3C8002926C7 /* DefinitionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32319BF280BA3C8002926C7 /* DefinitionDetailsViewController.swift */; };
 		F32319C2280BA624002926C7 /* WordsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32319C1280BA624002926C7 /* WordsDataSource.swift */; };
 		F32319C4280E01D9002926C7 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32319C3280E01D9002926C7 /* WordDetailsView.swift */; };
@@ -54,6 +56,8 @@
 		C68EB338292AE0A10020F5EA /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C68EB33A292AE1230020F5EA /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
 		C68EB342292C1E630020F5EA /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C68EB344292C3B160020F5EA /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		C68EB346292C3C140020F5EA /* FavoritesPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageButton.swift; sourceTree = "<group>"; };
 		F32319BF280BA3C8002926C7 /* DefinitionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionDetailsViewController.swift; sourceTree = "<group>"; };
 		F32319C1280BA624002926C7 /* WordsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDataSource.swift; sourceTree = "<group>"; };
 		F32319C3280E01D9002926C7 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				C689CEDC292ADA5A004EC27F /* BaseViewController.swift */,
 				AE535C6C27B20F6400B307A2 /* HomeViewController.swift */,
 				F32319BF280BA3C8002926C7 /* DefinitionDetailsViewController.swift */,
+				C68EB344292C3B160020F5EA /* FavoritesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5ABCEC27C49EFC0074E50C /* RefreshButton.swift */,
+				C68EB346292C3C140020F5EA /* FavoritesPageButton.swift */,
 				F32319C3280E01D9002926C7 /* WordDetailsView.swift */,
 				F3B9B13827E8236500FE7DE1 /* WordCollectionViewCell.swift */,
 				AE5ABCEA27C49ECB0074E50C /* RoundedViewWithColor.swift */,
@@ -261,9 +267,11 @@
 				AE5ABCEB27C49ECB0074E50C /* RoundedViewWithColor.swift in Sources */,
 				C689CEDB292ADA4E004EC27F /* SpinnerViewController.swift in Sources */,
 				F3B9B13927E8236500FE7DE1 /* WordCollectionViewCell.swift in Sources */,
+				C68EB345292C3B160020F5EA /* FavoritesViewController.swift in Sources */,
 				F32319C2280BA624002926C7 /* WordsDataSource.swift in Sources */,
 				AE535C6927B20F6400B307A2 /* AppDelegate.swift in Sources */,
 				F32319C4280E01D9002926C7 /* WordDetailsView.swift in Sources */,
+				C68EB347292C3C140020F5EA /* FavoritesPageButton.swift in Sources */,
 				C68EB339292AE0A10020F5EA /* APIConstants.swift in Sources */,
 				F32319C0280BA3C8002926C7 /* DefinitionDetailsViewController.swift in Sources */,
 				AE535C6B27B20F6400B307A2 /* SceneDelegate.swift in Sources */,

@@ -19,6 +19,14 @@ final class HomeViewController: BaseViewController {
         return label
     }()
 
+    lazy var favoritesPageButton: FavoritesPageButton = {
+        let button = FavoritesPageButton { [weak self] in
+            self?.navigationController?.pushViewController(FavoritesViewController(), animated: true)
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var randomWordView: RoundedViewWithColor = {
         let view = RoundedViewWithColor(color: UIColor(named: "WerddBlue")) { [weak self] in
             self?.refreshRandomWordLabels()
@@ -74,7 +82,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: "Taupe")
-        
+                
         addSubviews()
         refreshRandomWordLabels()
     }
@@ -83,14 +91,19 @@ final class HomeViewController: BaseViewController {
     
     private func addSubviews() {
         view.addSubview(appTitleLabel)
+        view.addSubview(favoritesPageButton)
         view.addSubview(randomWordView)
         view.addSubview(searchView)
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            appTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            appTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10),
             appTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             appTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            
+            favoritesPageButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10),
+          //  favoritesPageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            favoritesPageButton.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
             
             randomWordView.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 30),
             randomWordView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
