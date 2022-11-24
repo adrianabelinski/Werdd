@@ -7,6 +7,14 @@
 
 import UIKit
 
+let defaults = UserDefaults.standard
+
+//defaults.set(false, forKey: "isFavoriteButtonEnabled")
+
+//defaults.set(true, forKey: "isFavoriteButtonEnabled")
+
+let favoriteButtonEnabled = defaults.bool(forKey: "isFavoriteButtonEnabled")
+
 final class DefinitionDetailsViewController: UIViewController {
     
     // MARK: - Properties
@@ -22,20 +30,11 @@ final class DefinitionDetailsViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var favoriteHeartButton: FavoriteHeartButton = {
-        let button = FavoriteHeartButton {// [weak self] in
-        //    self?.navigationController?.pushViewController(FavoritesViewController(), animated: true)
-        }
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var favoritesPageButton: FavoritesPageButton = {
-        let button = FavoritesPageButton { [weak self] in
-            self?.navigationController?.pushViewController(FavoritesViewController(), animated: true)
-        }
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    lazy var favoriteButton: UIBarButtonItem = {
+        let favoriteButtonImage = UIImage(systemName: "heart")
+        let favoriteButton = UIBarButtonItem(image: favoriteButtonImage, style: .plain, target: self, action: #selector(didPressFavoritesButton))
+        favoriteButton.tintColor = UIColor(named: "WerddPink")
+        return favoriteButton
     }()
     
     let contentStackView: UIStackView = {
@@ -112,8 +111,6 @@ final class DefinitionDetailsViewController: UIViewController {
         
         setUpUI()
         setUpNavigation()
-        addHeartButton()
-        
     }
     
     // MARK: - UI Setup
@@ -124,16 +121,7 @@ final class DefinitionDetailsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
 
         navigationItem.title = selectedWord
-        
-    }
-    
-    private func addHeartButton() {
-        view.addSubview(favoriteHeartButton)
-        
-        NSLayoutConstraint.activate([
-            favoriteHeartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -45),
-            favoriteHeartButton.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
-        ])
+        navigationItem.rightBarButtonItem = favoriteButton
     }
     
     private func setUpUI() {
@@ -173,5 +161,11 @@ final class DefinitionDetailsViewController: UIViewController {
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             definitionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
+    }
+    
+    // MARK: - User actions
+    
+    @objc func didPressFavoritesButton() {
+        print("User pressed favorites button")
     }
 }
