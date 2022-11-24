@@ -22,6 +22,22 @@ final class DefinitionDetailsViewController: UIViewController {
         return scrollView
     }()
     
+    lazy var favoriteHeartButton: FavoriteHeartButton = {
+        let button = FavoriteHeartButton {// [weak self] in
+        //    self?.navigationController?.pushViewController(FavoritesViewController(), animated: true)
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var favoritesPageButton: FavoritesPageButton = {
+        let button = FavoritesPageButton { [weak self] in
+            self?.navigationController?.pushViewController(FavoritesViewController(), animated: true)
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,6 +112,8 @@ final class DefinitionDetailsViewController: UIViewController {
         
         setUpUI()
         setUpNavigation()
+        addHeartButton()
+        
     }
     
     // MARK: - UI Setup
@@ -106,6 +124,16 @@ final class DefinitionDetailsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
 
         navigationItem.title = selectedWord
+        
+    }
+    
+    private func addHeartButton() {
+        view.addSubview(favoriteHeartButton)
+        
+        NSLayoutConstraint.activate([
+            favoriteHeartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -45),
+            favoriteHeartButton.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
+        ])
     }
     
     private func setUpUI() {
