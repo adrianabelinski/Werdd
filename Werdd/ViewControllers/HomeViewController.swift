@@ -87,6 +87,13 @@ final class HomeViewController: BaseViewController {
         refreshRandomWordLabels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //fix for navigation bar staying big when navigating back to home screen.
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     // MARK: - UI Setup
     
     private func addSubviews() {
