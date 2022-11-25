@@ -7,21 +7,22 @@
 
 import UIKit
 
-//let defaults = UserDefaults.standard
-//
-//defaults.set(false, forKey: "isFavoriteButtonEnabled")
-//
-//defaults.set(true, forKey: "isFavoriteButtonEnabled")
-//
-//let favoriteButtonEnabled = defaults.bool(forKey: "isFavoriteButtonEnabled")
-
 final class DefinitionDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
     let wordDetail: WordDetail
     let selectedWord: String
-    var isFavorited = false
+    
+    var isFavorited: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: "isFavoriteButtonEnabled") //This goes directly to user defaults. This version is cleaner than using a stored property instead of a computed one.
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isFavoriteButtonEnabled")
+        }
+    }
     
     // MARK: - UI Properties
     
@@ -32,7 +33,12 @@ final class DefinitionDetailsViewController: UIViewController {
     }()
     
     lazy var favoriteButton: UIBarButtonItem = {
-        let favoriteButtonImage = UIImage(systemName: "heart")
+        let favoriteButtonImage: UIImage?
+        if isFavorited {
+            favoriteButtonImage = UIImage(systemName: "heart.fill")
+        } else {
+            favoriteButtonImage = UIImage(systemName: "heart")
+        }
         let favoriteButton = UIBarButtonItem(image: favoriteButtonImage, style: .plain, target: self, action: #selector(didPressFavoritesButton))
         favoriteButton.tintColor = UIColor(named: "WerddPink")
         return favoriteButton
