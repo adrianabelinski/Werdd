@@ -7,13 +7,13 @@
 
 import UIKit
 
-let defaults = UserDefaults.standard
-
+//let defaults = UserDefaults.standard
+//
 //defaults.set(false, forKey: "isFavoriteButtonEnabled")
-
+//
 //defaults.set(true, forKey: "isFavoriteButtonEnabled")
-
-let favoriteButtonEnabled = defaults.bool(forKey: "isFavoriteButtonEnabled")
+//
+//let favoriteButtonEnabled = defaults.bool(forKey: "isFavoriteButtonEnabled")
 
 final class DefinitionDetailsViewController: UIViewController {
     
@@ -21,6 +21,7 @@ final class DefinitionDetailsViewController: UIViewController {
     
     let wordDetail: WordDetail
     let selectedWord: String
+    var isFavorited = false
     
     // MARK: - UI Properties
     
@@ -166,6 +167,14 @@ final class DefinitionDetailsViewController: UIViewController {
     // MARK: - User actions
     
     @objc func didPressFavoritesButton() {
-        print("User pressed favorites button")
+        isFavorited.toggle()
+        if isFavorited {
+            print("Favorited!")
+            favoriteButton.image = UIImage(systemName: "heart.fill")
+        } else {
+            print("Unfavorited.")
+            favoriteButton.image = UIImage(systemName: "heart")
+        }
+        print("User pressed favorites button: \(isFavorited)")
     }
 }
