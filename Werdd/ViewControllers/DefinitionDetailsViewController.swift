@@ -14,13 +14,15 @@ final class DefinitionDetailsViewController: UIViewController {
     let wordDetail: WordDetail
     let selectedWord: String
     
+    lazy var userDefaultKey = "isFavoriteButtonEnabled.\(selectedWord).\(wordDetail.definition ?? "")" //Adding this makes it more specific. Now we can select and favorite a specific defintion of a word.
+    
     var isFavorited: Bool {
         get {
-            UserDefaults.standard.bool(forKey: "isFavoriteButtonEnabled") //This goes directly to user defaults. This version is cleaner than using a stored property instead of a computed one.
+            UserDefaults.standard.bool(forKey: userDefaultKey) //This goes directly to user defaults. This version is cleaner than using a stored property instead of a computed one.
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: "isFavoriteButtonEnabled")
+            UserDefaults.standard.set(newValue, forKey: userDefaultKey)
         }
     }
     
