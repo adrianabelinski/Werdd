@@ -13,18 +13,8 @@ final class DefinitionDetailsViewController: UIViewController {
     
     let wordDetail: WordDetail
     let selectedWord: String
-    
-    lazy var userDefaultKey = "isFavoriteButtonEnabled.\(selectedWord).\(wordDetail.definition ?? "")" //Adding this makes it more specific. Now we can select and favorite a specific defintion of a word.
-    
-    var isFavorited: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: userDefaultKey) //This goes directly to user defaults. This version is cleaner than using a stored property instead of a computed one.
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue, forKey: userDefaultKey)
-        }
-    }
+    lazy var favoritableWord = FavoritableWord(word: selectedWord, details: wordDetail)
+    let favoritesManager = FavoritesManager()
     
     // MARK: - UI Properties
     
@@ -36,7 +26,7 @@ final class DefinitionDetailsViewController: UIViewController {
     
     lazy var favoriteButton: UIBarButtonItem = {
         let favoriteButtonImage: UIImage?
-        if isFavorited {
+        if favoritesManager.isFavorited(word: favoritableWord) {
             favoriteButtonImage = UIImage(systemName: "heart.fill")
         } else {
             favoriteButtonImage = UIImage(systemName: "heart")
@@ -175,14 +165,13 @@ final class DefinitionDetailsViewController: UIViewController {
     // MARK: - User actions
     
     @objc func didPressFavoritesButton() {
-        isFavorited.toggle()
-        if isFavorited {
+        favoritesManager.toggleIsFavorited(word: favoritableWord)
+        if favoritesManager.isFavorited(word: favoritableWord) {
             print("Favorited!")
             favoriteButton.image = UIImage(systemName: "heart.fill")
         } else {
             print("Unfavorited.")
             favoriteButton.image = UIImage(systemName: "heart")
         }
-        print("User pressed favorites button: \(isFavorited)")
     }
 }
