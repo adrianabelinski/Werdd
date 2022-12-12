@@ -152,7 +152,7 @@ final class HomeViewController: BaseViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource & UICollectionViewDelegate Methods
+// MARK: - UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -169,6 +169,8 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

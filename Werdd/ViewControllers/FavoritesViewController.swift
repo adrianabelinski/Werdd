@@ -12,6 +12,8 @@ final class FavoritesViewController: UIViewController {
     
     // MARK: - Properties
     
+    var favoritesManager = FavoritesManager()
+    
     let favoritesTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,11 +23,11 @@ final class FavoritesViewController: UIViewController {
     }()
     
     
-    let favoritesTableView: UITableView = {
+    lazy var favoritesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.dataSource = self
+       // tableView.delegate = self
         //tableView.regis
         return tableView
     }()
@@ -57,12 +59,21 @@ final class FavoritesViewController: UIViewController {
             favoritesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+}
+
+// MARK: - UITableViewDataSource
+
+extension FavoritesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favoritesManager.favoritedWords.count
+    }
     
-    
-    
-    
-    
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let word = favoritesManager.favoritedWords[indexPath.row]
+        let cell = UITableViewCell()
+        cell.textLabel?.text = word.word
+        return cell
+    }
     
 }
 
