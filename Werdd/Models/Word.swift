@@ -12,7 +12,7 @@ struct Word: Codable {
     let results: [WordDetail]?
 }
 
-struct WordDetail: Codable {
+struct WordDetail: Codable, Equatable {
     let definition: String?
     let synonyms: [String]?
     let antonyms: [String]?

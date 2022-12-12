@@ -14,7 +14,7 @@ final class DefinitionDetailsViewController: UIViewController {
     let wordDetail: WordDetail
     let selectedWord: String
     lazy var favoritableWord = FavoritableWord(word: selectedWord, details: wordDetail)
-    let favoritesManager = FavoritesManager()
+    var favoritesManager = FavoritesManager()
     
     // MARK: - UI Properties
     
