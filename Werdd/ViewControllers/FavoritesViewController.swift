@@ -20,6 +20,16 @@ final class FavoritesViewController: UIViewController {
         return label
     }()
     
+    
+    let favoritesTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.dataSource = self
+//        tableView.delegate = self
+        //tableView.regis
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -34,11 +44,17 @@ final class FavoritesViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(favoritesTitleLabel)
+        view.addSubview(favoritesTableView)
         
         NSLayoutConstraint.activate([
             favoritesTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -10),
             favoritesTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            favoritesTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor)
+            favoritesTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            
+            favoritesTableView.topAnchor.constraint(equalTo: favoritesTitleLabel.bottomAnchor),
+            favoritesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            favoritesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            favoritesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
