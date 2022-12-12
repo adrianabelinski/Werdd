@@ -4,14 +4,14 @@ struct FavoritesManager {
     
     var favoritedWords: [FavoritableWord] = [] {
         didSet {
-            persistFavoritedWords()
+            replaceDiscVersionWithLocalVersion()
         }
     }
     
     private var favoritedWordsKey = "favoritedWords"
     
     init() {
-        populateFavoritedWords()
+        replaceLocalVersionWithDiscVersion()
     }
     
     // MARK: - Public methods
@@ -34,7 +34,7 @@ struct FavoritesManager {
     // MARK: - Private methods
     
     //Replaces local version of favoritesWords with UserDefaults version
-    private mutating func populateFavoritedWords() {
+    private mutating func replaceLocalVersionWithDiscVersion() {
         let decoder = JSONDecoder()
         guard let data = UserDefaults.standard.data(forKey: favoritedWordsKey) else {
             return
@@ -43,7 +43,7 @@ struct FavoritesManager {
     }
     
     //replaces UserDefault's version of favorited words with local version.
-    private func persistFavoritedWords() {
+    private func replaceDiscVersionWithLocalVersion() {
         let encoder = JSONEncoder()
         let data = try! encoder.encode(favoritedWords)
         UserDefaults.standard.set(data, forKey: favoritedWordsKey)
